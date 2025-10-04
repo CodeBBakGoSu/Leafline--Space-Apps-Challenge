@@ -32,7 +32,22 @@ bloom_data = {
             {"month": 10, "data": 0},
             {"month": 11, "data": 0},
             {"month": 12, "data": 0}
-        ]
+        ],
+        "honey": [
+		{"month": 1,"amount": 20},
+		{"month": 2,"amount": 30},
+		{ "month": 3,"amount": 200
+		},
+		{"month": 4,"amount": 500},
+        {"month": 5,"amount": 400},
+        {"month": 6,"amount": 150},
+        {"month": 7,"amount": 80},
+        {"month": 8,"amount": 30},
+        {"month": 9,"amount": 10},
+        {"month": 10,"amount": 5},
+        {"month": 11,"amount": 2},
+		{"month": 12,"amount": 0}
+	]
     },
     2024: {
         # (필요하다면 다른 연도의 데이터도 여기에 추가할 수 있습니다.)
@@ -49,6 +64,21 @@ bloom_data = {
             {"month": 3, "data": 180},
             {"month": 4, "data": 350},
             # ... (2024년 데이터)
-        ]
+        ],
+        "honey": [
+		{"month": 1,"amount": 20},
+		{"month": 2,"amount": 30},
+		{ "month": 3,"amount": 200
+		},
+		{"month": 4,"amount": 500},
+        {"month": 5,"amount": 400},
+        {"month": 6,"amount": 150},
+        {"month": 7,"amount": 80},
+        {"month": 8,"amount": 30},
+        {"month": 9,"amount": 10},
+        {"month": 10,"amount": 5},
+        {"month": 11,"amount": 2},
+		{"month": 12,"amount": 0}
+    ]
     }
 }
