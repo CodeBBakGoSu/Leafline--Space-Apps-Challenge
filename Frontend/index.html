@@ -9,7 +9,6 @@
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
             crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/index.css" />
         <link rel="icon" type="image/png" href="img/logo/favicon.png" />
     </head>
     <body>
@@ -56,7 +55,7 @@
                                 <div class="menu-img">
                                     <img src="img/icon_common/icon_nav_chatbot_gray.png" width="40px" />
                                 </div>
-                                <div class="menu-text">Bloom Ai</div>
+                                <div class="menu-text font-m">Bloom Ai</div>
                             </div>
                         </div>
                     </div>
@@ -66,20 +65,12 @@
         <div id="dBody">
             <div class="body-container">
                 <div class="top">
-                    <div class="greeting-container">
-                        greeting
-                    </div>
-                    <div class="notification-container">
-                        notification
-                    </div>
+                    <div class="greeting-container">greeting</div>
+                    <div class="notification-container">notification</div>
                 </div>
                 <div class="middle">
-                    <div class="to-do-container">
-                        todo
-                    </div>
-                    <div class="weather-container">
-                        weather
-                    </div>
+                    <div class="to-do-container">todo</div>
+                    <div class="weather-container">weather</div>
                 </div>
                 <div class="bottom">
                     <!-- html include -->
@@ -90,34 +81,34 @@
         <script src="js/index.js"></script>
         <script>
             // 메뉴 클릭 시 페이지 이동
-            document.addEventListener('DOMContentLoaded', () => {
-                const menuItems = document.querySelectorAll('.menu-item, .chatbot-menu');
-                
-                menuItems.forEach(item => {
-                    item.addEventListener('click', () => {
-                        const page = item.getAttribute('data-page');
-                        
-                        switch(page) {
-                            case 'dashboard':
-                                window.location.href = 'pages/dashboard.html';
+            document.addEventListener("DOMContentLoaded", () => {
+                const menuItems = document.querySelectorAll(".menu-item, .chatbot-menu");
+
+                menuItems.forEach((item) => {
+                    item.addEventListener("click", () => {
+                        const page = item.getAttribute("data-page");
+
+                        switch (page) {
+                            case "dashboard":
+                                window.location.href = "pages/dashboard.html";
                                 break;
-                            case 'calendar':
-                                window.location.href = 'calendar.html';
+                            case "calendar":
+                                window.location.href = "calendar.html";
                                 break;
-                            case 'community':
-                                alert('Community 페이지는 준비 중입니다.');
+                            case "community":
+                                alert("Community 페이지는 준비 중입니다.");
                                 break;
-                            case 'setting':
-                                alert('Setting 페이지는 준비 중입니다.');
+                            case "setting":
+                                alert("Setting 페이지는 준비 중입니다.");
                                 break;
-                            case 'chatbot':
-                                alert('Bloom AI 챗봇은 준비 중입니다.');
+                            case "chatbot":
+                                alert("Bloom AI 챗봇은 준비 중입니다.");
                                 break;
                         }
                     });
-                    
+
                     // 커서 포인터 추가
-                    item.style.cursor = 'pointer';
+                    item.style.cursor = "pointer";
                 });
             });
         </script>
