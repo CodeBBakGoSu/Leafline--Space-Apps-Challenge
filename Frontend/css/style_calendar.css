@@ -50,12 +50,7 @@ body {
     background-color: orange;
     padding: 10px 40px;
 }
-.head-moveBt {
-    width: 50%;
-    border: 1px solid #000;
-    background-color: #f58b21;
-    padding: 10px 40px;
-}
+
 
 .navigation a {
     margin-left: 20px;
@@ -75,16 +70,25 @@ body {
     flex-grow: 1;
     padding: 20px;
     border-right: 1px solid #000;
+    background-color: #ff1eb4;
 }
 
 /*캘린더 헤더*/
 .header{background-color: #007bff; display: flex;}
 
+/*헤더-월 이동BT*/
+.head-moveBt {
+    width: 50%;
+    border: 1px solid #000;
+    background-color: #88f521;
+    padding: 10px 20px 10px 700px;
+    align-items: end;
+    z-index: 4; /*오버레이의 z-index가 5이기 떄문에 밑에 깔으려고 4로 설정*/
+}
 .calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
 }
 
 .calendar-header button {

@@ -1,13 +1,11 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, status
 from typing import List
-from ..service.get_todos_service import get_all_todos
-from ..schema.todo_schema import Todo
+from ..service.get_todos_service import add_todo
+from ..schema.todo_schema import Todo, TodoCreate
 
-router = APIRouter()
+router = APIRouter(prefix = "/todos", tags = ["Todos"])
 
+@router.post(response_model=Todo, status_code=status.HTTP_201_CREATED)
 
-
-@router.get("/todos", response_model=List[Todo])
-def get_todos():
-    """모든 할 일 목록을 반환"""
-    return get_all_todos()
+def add_todo(todo_create : TodoCreate):
+    return add_todo(todo_create)
