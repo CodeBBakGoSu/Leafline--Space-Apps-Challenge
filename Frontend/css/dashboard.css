@@ -204,7 +204,7 @@ select {
 }
 
 /* 슬라이더 배경 */
-.slider {
+.slider { 
     position: absolute;
     cursor: pointer;
     top: 0;
