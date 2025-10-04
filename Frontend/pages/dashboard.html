@@ -11,19 +11,18 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/
-        css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet" />
-        <link rel="stylesheet" href="../css/font.css" />
-        <link rel="stylesheet" href="../css/style.css" />
-        <link rel="stylesheet" href="../css/dashboard.css" />
-        <link rel="icon" type="image/png" href="../img/common/logo/favicon.png" />
+        <link rel="stylesheet" href="/css/font.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/dashboard.css" />
+        <link rel="icon" type="image/png" href="/img/logo/favicon.png" />
         <!-- Bootstrap -->
          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
          rel="stylesheet" 
          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
          crossorigin="anonymous">
-        <script defer src="../js/dashboard.js"></script>
+        <script defer src="/js/dashboard.js"></script>
         <script
         defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ4IcdvhFzj-_9c9nGtKZhoBIN4OXVJPI&callback=initMap">
@@ -37,7 +36,7 @@
                         <div class="map-title">
                             <h1 class="font-title">Live Map</h1>
                             <div class="map-subtitle">
-                                <img src="../img/live map/livemap_alert.png" width="20px">
+                                <img src="/img/live map/livemap_alert.png" width="20px">
                                     <p class="font-subtitle"><span id=flower>Acacia flowers</span> are within <span id="radius">20km</span> </p>
                             </div>
                         </div>
@@ -59,19 +58,19 @@
                         </div>
                     </div>
                     <div class="map-item">
-                        <div id="map">
-                            <img src="../img/live map/livemap_area_map.png" width="700px">
-                            <div id="sizeBtn">
-                                <img src="../img/live map/livemap_btn_size_plus.png" width="35px">
-                                <img src="../img/live map/livemap_btn_size_minus.png" width="35px">
-                            </div>
+                        <div id="map" style="width: 100%; height: 500px; border-radius: 10px; overflow: hidden;">
+                            <!-- Google Maps가 여기에 렌더링됩니다 -->
                         </div>
+                        <!-- <div id="sizeBtn">
+                            <img src="../img/live map/livemap_btn_size_plus.png" width="35px">
+                            <img src="../img/live map/livemap_btn_size_minus.png" width="35px">
+                        </div> -->
                     </div>
                 </div>
                 <div class="chart-container"></div>
             </div>
         </div>
   </body>
-        <script src="../js/index.js"></script>
+        <script src="/js/index.js"></script>
     </body>
 </html>
