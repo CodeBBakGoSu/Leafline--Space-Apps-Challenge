@@ -43,17 +43,50 @@ def get_ai_recommended_todos(context: str = "") -> List[Todo]:
         generation_config=generation_config,
     )
     
+    # 사용자 입력 컨텍스트 처리
+    user_input = context.strip() if context else ""
+    
     # 프롬프트 생성
-    prompt = f"""당신은 양봉 전문가입니다. 양봉업자를 위한 할 일 목록을 추천해주세요.
+    if user_input:
+        # 사용자가 입력한 내용이 있을 때
+        prompt = f"""당신은 양봉 전문가입니다. 사용자가 입력한 내용을 기반으로 구체적인 양봉 작업 3가지를 추천해주세요.
 
-다음 JSON 형식으로 정확히 5개의 할 일을 생성해주세요:
+사용자 입력: "{user_input}"
+
+다음 JSON 형식으로 정확히 3개의 할 일을 생성해주세요:
 
 {{
   "todos": [
     {{
       "id": 1,
       "content": "할 일 제목 (영어로)",
-      "duration": "예상 소요 시간 (about X hours 형식)",
+      "completed": false
+    }}
+  ]
+}}
+
+규칙:
+1. 사용자가 입력한 "{user_input}"와 관련된 구체적인 양봉 작업 3개를 추천하세요.
+2. content는 반드시 영어로 작성하고, 실용적이고 실행 가능한 작업이어야 합니다.
+3. content는 구체적이고 명확하게 작성하되, 필요시 2줄에 걸쳐 표시될 수 있도록 충분히 설명적으로 작성하세요.
+4. id는 1부터 시작하는 순차적인 숫자입니다.
+5. completed는 항상 false로 설정하세요.
+6. 반드시 위 JSON 형식을 정확히 따라야 합니다.
+
+사용자 정보: {persona_context}
+
+위 사용자 정보와 입력을 고려하여 맞춤형 할 일 3개를 생성해주세요."""
+    else:
+        # 사용자 입력이 없을 때 (일반 추천)
+        prompt = f"""당신은 양봉 전문가입니다. 양봉업자를 위한 일반적인 할 일 목록을 추천해주세요.
+
+다음 JSON 형식으로 정확히 3개의 할 일을 생성해주세요:
+
+{{
+  "todos": [
+    {{
+      "id": 1,
+      "content": "할 일 제목 (영어로)",
       "completed": false
     }}
   ]
@@ -61,23 +94,23 @@ def get_ai_recommended_todos(context: str = "") -> List[Todo]:
 
 규칙:
 1. content는 반드시 영어로 작성하고, 양봉 작업과 관련된 실질적인 작업이어야 합니다.
-2. duration은 "about X hours" 형식으로 작성하세요 (예: "about 2 hours").
+2. content는 구체적이고 명확하게 작성하되, 필요시 2줄에 걸쳐 표시될 수 있도록 충분히 설명적으로 작성하세요.
 3. id는 1부터 시작하는 순차적인 숫자입니다.
 4. completed는 항상 false로 설정하세요.
 5. 반드시 위 JSON 형식을 정확히 따라야 합니다.
 
 양봉 작업 예시:
 - 벌통 검사 (Hive Inspection)
-- 여왕벌 확인 (Queen Check)
+- 여왕벌 확인 및 산란 패턴 체크 (Check Queen Bee Status and Egg Laying Pattern)
 - 꿀 수확 (Honey Harvesting)
 - 응애 방제 (Varroa Mite Treatment)
 - 먹이 급여 (Feeding)
 - 벌통 청소 (Hive Cleaning)
 - 겨울 준비 (Winter Preparation)
 
-사용자 정보 및 컨텍스트: {full_context}
+사용자 정보: {persona_context}
 
-위 사용자 정보를 고려하여 맞춤형 할 일 5개를 생성해주세요."""
+위 사용자 정보를 고려하여 맞춤형 할 일 3개를 생성해주세요."""
     
     try:
         # Gemini API 호출
@@ -91,7 +124,6 @@ def get_ai_recommended_todos(context: str = "") -> List[Todo]:
             Todo(
                 id=todo_data["id"],
                 content=todo_data["content"],
-                duration=todo_data["duration"],
                 completed=todo_data["completed"]
             )
             for todo_data in response_data.get("todos", [])
@@ -100,13 +132,11 @@ def get_ai_recommended_todos(context: str = "") -> List[Todo]:
         return todos
         
     except Exception as e:
-        # 에러 발생 시 기본 TODO 리스트 반환
+        # 에러 발생 시 기본 TODO 리스트 반환 (3개)
         print(f"Gemini API 에러: {str(e)}")
         return [
-            Todo(id=1, content="Hive Inspection", duration="about 1 hours", completed=True),
-            Todo(id=2, content="Pollen Patty Feeding", duration="about 2 hours", completed=False),
-            Todo(id=3, content="Hive Cleaning", duration="about 1 hours", completed=False),
-            Todo(id=4, content="Hive Inspection", duration="about 1 hours", completed=False),
-            Todo(id=5, content="Hive Inspection", duration="about 1 hours", completed=False),
+            Todo(id=1, content="Hive Inspection", completed=False),
+            Todo(id=2, content="Check Queen Bee Status", completed=False),
+            Todo(id=3, content="Varroa Mite Treatment", completed=False),
         ]
 

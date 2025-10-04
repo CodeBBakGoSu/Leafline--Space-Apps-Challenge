@@ -9,7 +9,6 @@ def add_todo(todo_create: todo_schema.TodoCreate) -> todo_schema.Todo:
     new_todo = todo_schema.Todo(
         id=todo_schema.latest_todo_id,
         content=todo_create.content,
-        duration=todo_create.duration,
         completed=False
     )
     

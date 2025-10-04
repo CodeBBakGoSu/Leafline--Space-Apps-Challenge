@@ -34,6 +34,11 @@ app.include_router(todo_router, prefix="")
 app.include_router(weather_router, prefix="")
 app.include_router(chart_router, prefix="")  # chart_router 등록
 app.include_router(community_router, prefix="")  # community_router 등록
+app.include_router(profile_router, prefix="/api")
+app.include_router(todo_router, prefix="/api")
+app.include_router(weather_router, prefix="/api")
+app.include_router(chart_router, prefix="/api")  # chart_router 등록
+
 
 @app.get("/", tags=["Root"])
 async def root():
