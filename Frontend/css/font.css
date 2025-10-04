@@ -1,0 +1,119 @@
+/* =========================================
+
+web font installation & font color
+
+font-family : Montserrat
+
+400 : regular
+500 : medium
+600 : semibold
+
+HTML Embedding Code
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/
+css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" 
+rel="stylesheet">
+
+========================================= */
+
+/* =========================================
+            web font installation
+========================================= */
+
+/* 400-regular */
+.font-r {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* 500-medium */
+.font-m {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* 600-semibold */
+.font-sb {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* =========================================
+                font color
+========================================= */
+.font-main {
+    color: #ffb246;
+}
+
+.font-sub1 {
+    color: #ffca80;
+}
+
+.font-sub2 {
+    color: #402806;
+}
+
+.font-white {
+    color: #ffffff;
+}
+
+.font-grey1 {
+    color: #f7f5f2;
+}
+
+.font-grey2 {
+    color: #ccc8c2;
+}
+
+.font-grey3 {
+    color: #8c8985;
+}
+
+.font-grey4 {
+    color: #4d4b49;
+}
+
+.font-black {
+    color: #4d4b49;
+}
+
+/* =========================================
+                font style
+    공통적으로 적용되는 텍스트 스타일 미리 지정
+========================================= */
+/* 네비게이션 메뉴에 적용되는 폰트 사이즈 */
+.font-nav {
+    font-size: ;
+}
+
+/* Daily to do List, Weather,
+Live Map, Chart Visualization, Calendar 제목 폰트 사이즈 */
+.font-title {
+    font-weight: 600;
+    color: #4d4b49; /* grey4 */
+    font-size: 18px;
+}
+
+/* (1/3), Oct Week1 등에 적용되는 폰트 사이즈 */
+.font-subtitle {
+    font-weight: 500;
+    color: #4d4b49; /* grey4 */
+    font-size: 14px;      
+}
+
+/* to do List 블럭의 메인 글자 */
+.font-todo-title {
+    font-size: ;               
+}
+
+/* to do List 블럭의 작은 글자 */
+.font-todo-sub {
+    font-size: ;
+}
