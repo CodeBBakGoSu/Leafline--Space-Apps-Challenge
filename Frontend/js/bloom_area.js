@@ -9,8 +9,8 @@ let bloomAreaObjects = [];
 
 function generateIrregularPolygonCoords(center, averageRadius) {
   const coords = [];
-  const numVertices = 30;
-  const radiusVariance = 0.3;
+  const numVertices = 15;
+  const radiusVariance = 0.2;
 
   for (let i = 0; i < numVertices; i++) {
     const angle = (i / numVertices) * 360;
@@ -38,25 +38,30 @@ function createBloomAreas(map, bloom_areas) {
 
     const polygon = new google.maps.Polygon({
       paths: polygonCoords,
-      strokeColor: "#FFC107",
-      strokeOpacity: 0.8,
+      strokeColor: "#4177FF",
+      strokeOpacity: 0.5,
       strokeWeight: 2,
-      fillColor: "#FFC107",
-      fillOpacity: 0.35,
+      fillColor: "#4177FF",
+      fillOpacity: 0.2,
       map: map,
     });
     bloomAreaObjects.push(polygon);
 
     const flowerIcon = {
-      url: "https://www.vecteezy.com/png/12895938-cute-and-simple-flower-illustration-in-trendy-color-theme-for-design-element-and-ornament",
-      scaledSize: new google.maps.Size(40, 40)
+      url: "../img/live map/livemap_flower.png", // 꽃 아이콘 이미지 경로
+      scaledSize: new google.maps.Size(40, 40), // 아이콘 크기
+      origin: new google.maps.Point(0, 0), // 아이콘 원점
+      anchor: new google.maps.Point(20, 20) // 아이콘 앵커 (아이콘의 바닥 중앙이 위치할 지점)
     };
+
     const areaMarker = new google.maps.Marker({
       position: centerPoint,
       map: map,
       icon: flowerIcon,
-      title: area.name
+      title: area.name,
+      zIndex: 99999 // 마커가 폴리곤 위에 표시되도록 높은 zIndex 설정
     });
+
     areaMarker.addListener("click", () => {
       infoWindow.setContent(`<strong>${area.name}</strong><br>${area.info}`);
       infoWindow.open(map, areaMarker);
