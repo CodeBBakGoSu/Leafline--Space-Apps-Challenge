@@ -113,18 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 오버레이 클릭 시 비활성화
     overlay.addEventListener('click', deactivateSidebar);
-    
-    // 이전/다음 달 버튼 이벤트
-    prevMonthBtn.addEventListener('click', () => {
-        currentDate.setMonth(currentDate.getMonth() - 1);
-        renderCalendar();
-    });
 
-    nextMonthBtn.addEventListener('click', () => {
-        currentDate.setMonth(currentDate.getMonth() + 1);
-        renderCalendar();
-    });
 
     // 초기 달력 렌더링
     renderCalendar();
+    
 });
