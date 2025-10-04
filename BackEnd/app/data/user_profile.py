@@ -25,10 +25,8 @@ USER_PROFILE: Dict[str, Any] = {
         "notification_enabled": True,
         "ai_suggestions_enabled": True,
     },
-    "current_weather": {
-        "temperature": None,
-        "condition": None,
-        "humidity": None,
+    "weather_forecast": {
+        "days": [],  # 7일 날씨 예보 리스트
         "last_updated": None,
     },
     "current_season": "spring",  # spring, summer, fall, winter
@@ -67,14 +65,28 @@ def update_profile(updates: Dict[str, Any]) -> Dict[str, Any]:
     return USER_PROFILE.copy()
 
 
-def update_weather(weather_data: Dict[str, Any]) -> None:
-    """날씨 정보 업데이트"""
+def update_weather(days_list: list) -> None:
+    """
+    7일 날씨 정보 업데이트
+    
+    Args:
+        days_list: 7일 날씨 데이터 리스트
+        예: [
+            {"date": "2025-10-04", "avgTempC": 29.4, "avgTempF": 84.9, "weather": "sun"},
+            ...
+        ]
+    """
     global USER_PROFILE
-    USER_PROFILE["current_weather"] = {
-        **weather_data,
+    USER_PROFILE["weather_forecast"] = {
+        "days": days_list,
         "last_updated": datetime.now().isoformat(),
     }
     USER_PROFILE["updated_at"] = datetime.now().isoformat()
+
+
+def get_weather_forecast() -> Dict[str, Any]:
+    """7일 날씨 예보 반환"""
+    return USER_PROFILE.get("weather_forecast", {"days": [], "last_updated": None})
 
 
 def get_location() -> Dict[str, float]:
@@ -98,8 +110,12 @@ def get_beekeeping_context() -> str:
         f"Current season: {profile['current_season']}",
     ]
     
-    if profile["current_weather"]["condition"]:
-        context_parts.append(f"Current weather: {profile['current_weather']['condition']}")
+    # 7일 날씨 정보 중 오늘 날씨 추가
+    weather_forecast = profile.get("weather_forecast", {})
+    days = weather_forecast.get("days", [])
+    if days and len(days) > 0:
+        today = days[0]
+        context_parts.append(f"Today's weather: {today.get('weather')}, {today.get('avgTempC')}°C")
     
     if profile["last_hive_inspection"]:
         context_parts.append(f"Last inspection: {profile['last_hive_inspection']}")
