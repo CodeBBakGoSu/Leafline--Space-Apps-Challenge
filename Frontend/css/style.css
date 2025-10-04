@@ -32,6 +32,7 @@ nav-wrap
 }
 
 .nav {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* 로고는 위, 메뉴는 아래로 분리 */
@@ -49,6 +50,8 @@ nav-wrap
     display: flex;
     flex-direction: column;
     gap: 5vh;
+
+    z-index: 15; /* .nav-honey 보다 z-index 높게 설정 */
 }
 
 .menu-item {
@@ -63,7 +66,6 @@ nav-wrap
 .menu-text {
     color: var(--Grey3, #8c8985);
 }
-
 
 /* chatbot */
 .chatbot-wrap {

@@ -1,23 +1,16 @@
 /*
   community.css
+  - Styles for the community page content.
   - Uses variables from style.css for consistency.
-  - Contains layout fix and animation for the community page.
 */
 
-/* Layout Fix: Make dBody fill the remaining space */
-.page-wrap{
-    position: relative;
-    display: flex;
-}
-
-#dBody {
-    flex-grow: 1;
-    height: 100vh;
-    overflow-y: auto;
+body {
+    background-color: #F5F5F5; /* A neutral background */
     padding: 2rem;
     box-sizing: border-box;
-    background-color: var(--background-color, #F5F5F5);
 }
+
+/* The main layout is now handled by global styles via the .subpage-wrap and .page-item classes. */
 
 .container {
     max-width: 800px;
