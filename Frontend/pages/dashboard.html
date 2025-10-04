@@ -22,11 +22,11 @@
          rel="stylesheet" 
          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
          crossorigin="anonymous">
+         <script defer src="../js/bee_flight_range.js"></script>
         <script defer src="../js/dashboard.js"></script>
         <script
         defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ4IcdvhFzj-_9c9nGtKZhoBIN4OXVJPI&callback=initMap">
-        </script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ4IcdvhFzj-_9c9nGtKZhoBIN4OXVJPI&language=en&callback=initMap">        </script>
     </head>
     <body>
         <div class="subpage-wrap">
@@ -40,7 +40,17 @@
                                     <p class="font-subtitle"><span id=flower>Acacia flowers</span> are within <span id="radius">20km</span> </p>
                             </div>
                         </div>
+                        
                         <div class="map-menu">
+                            <!-- 벌 비행 범위 토글 추가 -->
+                            <div class="bee-range-toggle">
+                                <label class="switch">
+                                    <input type="checkbox" id="beeRangeToggle" checked>
+                                    <span class="slider"></span>
+                                </label>
+                                <span class="toggle-label font-m">🐝 Bee Range</span>
+                            </div>
+                            
                             <div class="dropdown">
                                 <select id="dropdown-select" class="font-m font-grey4">
                                     <option value="2025">2025</option>
