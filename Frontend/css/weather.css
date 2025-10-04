@@ -1,0 +1,105 @@
+/* ================================
+날씨 컨테이너 
+================================ */
+/* ===== weather 제목 ===== */
+.weather-container {
+    padding: 20px;
+}
+
+.weather-title {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.weather-title p {
+    font-size: 12px;
+}
+
+/* ===== Weather cards (추가) ===== */
+.weather-list {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+    overflow-x: auto; /* 폭이 좁을 때 스크롤 */
+    padding: 6px 0;
+}
+
+.wcard {
+    width: 85px;
+    height: 120px;
+    background: #f7f5f2; /* 흐린 베이지 */
+    border-radius: 16px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    color: #ccc8c2; /* 흐린 글자색 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 0 auto; /* flex 줄바꿈 방지 */
+}
+
+.wcard .top {
+    font-size: 14px;
+    line-height: 1;
+    margin-top: 2px;
+    text-align: center;
+    /* font: regular */
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.wcard .divider {
+    align-self: stretch;
+    height: 1.5px;
+    background: #ffffff;
+    border-radius: 2px;
+    margin: 4px 0;
+}
+
+.wcard img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    opacity: 0.85;
+    filter: grayscale(1); /* 기본은 흐린 아이콘 */
+}
+
+.wcard .temp {
+    font-size: 22px;
+    letter-spacing: 0.3px;
+    margin-bottom: 2px;
+    /* font: medium */
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* 오늘 카드(첫 번째) — 강조 */
+.wcard.today {
+    width: 120px;
+    height: 120px;
+    background: #111; /* 짙은 배경 */
+    color: #fff;
+    opacity: 1;
+}
+
+.wcard.today .divider {
+    background: #ffffff;
+}
+.wcard.today img {
+    filter: none;
+} /* 컬러 아이콘 */
+
+.wcard.today .temp {
+    font-size: 22px;
+    /* font: medium */
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
