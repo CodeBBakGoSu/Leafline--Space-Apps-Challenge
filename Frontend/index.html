@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="css/index.css" />
         <link rel="stylesheet" href="css/todoList.css" />
         <link rel="stylesheet" href="css/chat.css" />
+        <link rel="styleshhet" href="css/community.css" />
         <link rel="icon" type="image/png" href="img/logo/favicon.png" />
     </head>
     <body>
@@ -164,6 +165,7 @@
                 const frameScale = {
                     dashboard: 0.78,
                     calendar: 0.74,
+                    community: 1,
                 };
 
                 function setMenuActive(targetPage) {
@@ -174,6 +176,14 @@
                 }
 
                 function switchContent(page) {
+                    // 커뮤니티 페이질 경우, 미들 세션 숨기기
+                    if(page == "community") {
+                        document.querySelector(".middle-section").style.display = "none";
+                        document.querySelector(".view-label").style.display = "none";
+                        document.querySelector(".bottom-section").style.height = "100%";
+                    } else {
+                        document.querySelector(".middle-section").style.display = "flex";
+                    }
                     switch (page) {
                         case "dashboard":
                             contentFrame.src = "pages/dashboard.html";
@@ -182,8 +192,8 @@
                             contentFrame.src = "pages/calendar.html";
                             break;
                         case "community":
-                            alert("Community 페이지는 준비 중입니다.");
-                            return;
+                            contentFrame.src = "pages/community.html";
+                            break;
                         case "setting":
                             alert("Setting 페이지는 준비 중입니다.");
                             return;
