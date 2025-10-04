@@ -5,7 +5,7 @@ from app.chart import chart_service # <-- service를 통째로 가져오도록 �
 from app.chart.chart_schema import ChartDataPoint
 
 router = APIRouter(
-    prefix="/api/charts",
+    prefix="/charts",
     tags=["Charts"]
 )
 
