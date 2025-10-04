@@ -72,15 +72,17 @@
     min-height: 200px;
     display: flex;
     gap: 24px;
-    padding: 24px 40px;
+    /* padding: 24px 40px; */
+    padding: 0;
 }
 
 .todo-section {
     flex: 0 0 60%;
     background: #ffffff;
     border-radius: 18px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    padding: 18px;
+    /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); */
+    /* padding: 18px; */
+    padding: 0px;
     display: flex;
     overflow: hidden;
 }
@@ -106,7 +108,7 @@
     flex: 0 0 40%;
     background: #ffffff;
     border-radius: 18px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); */
     padding: 24px;
     display: flex;
     align-items: center;
