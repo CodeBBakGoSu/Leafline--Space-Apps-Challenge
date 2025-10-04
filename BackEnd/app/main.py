@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
 from app.routers import health
+from app.dashBord.weather_router import router as weather_router
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -26,6 +27,7 @@ app.add_middleware(
 
 # 라우터 등록
 app.include_router(health.router, prefix="/api/health", tags=["Health"])
+app.include_router(weather_router, prefix="/api", tags=["Weather"])
 
 
 @app.get("/", tags=["Root"])
