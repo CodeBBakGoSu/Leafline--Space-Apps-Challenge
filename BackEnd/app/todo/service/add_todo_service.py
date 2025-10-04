@@ -1,17 +1,19 @@
-from ..schema import TodoCreate, todos
+from ..schema import todo_schema
 
-def add_todo(todo_create: TodoCreate):
+def add_todo(todo_create: todo_schema.TodoCreate) -> todo_schema.Todo:
     """새로운 할 일을 생성하고, 생성된 할 일을 반환"""
-    # global 키워드를 사용해 파일 외부의 latest_todo_id 변수를 수정
-    global latest_todo_id
-    latest_todo_id += 1
+    # 새 ID 생성
+    todo_schema.latest_todo_id += 1
     
-    new_todo = {
-        "id": latest_todo_id,
-        "content": todo_create.content,
-        "duration": todo_create.duration,
-        "completed": False  # 새로 추가된 할 일은 항상 '미완료' 상태
-    }
+    # 새 Todo 생성
+    new_todo = todo_schema.Todo(
+        id=todo_schema.latest_todo_id,
+        content=todo_create.content,
+        duration=todo_create.duration,
+        completed=False
+    )
     
-    todos.append(new_todo)
+    # 리스트에 추가
+    todo_schema.todos.append(new_todo)
+    
     return new_todo
