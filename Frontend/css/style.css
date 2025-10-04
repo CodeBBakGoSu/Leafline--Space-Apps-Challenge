@@ -24,12 +24,36 @@ nav-wrap
     height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .nav {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 10vh; /* 로고와 메뉴들 간 간격 설정 */
+    /* gap: 10vh; 로고와 메뉴들 간 간격 설정 -> 가변단위이므로 웹페이지 사이즈에 따라 간격이 달라짐 */
+    gap: 20px; /* 고정단위로 변경 */
+}
+
+/* nav menu select bar shape */
+.nav-honey {
+    position: absolute;
+    width: 190px;
+    height: 117px;
+    top: 47px;
+    left: 7px;
+    background-color: #ffffff;
+    /* 추가된 코드 */
+    border-radius: 999px;
+    overflow: visible;
+    clip-path: path(
+        "M160.871 114H161V0H160.871V7.62019C160.871 25.4771 145.394 33.2228 129 36C115.099 38.3548 83.401 40.3562 69.5 38C55.599 35.6438 33.9792 29.4989 21.0927 31.5C9.5068 33.2993 2.33446 41.7968 0.5 53.9019V58.4019C0.5 69.4019 10.7896 80.0361 21.0927 81.5C32.4762 83.1172 55.599 78.3562 69.5 76C83.401 73.6438 115.099 75.6452 129 78C145.394 80.7772 160.871 90.7823 160.871 108.639V114Z"
+    );
+
+    transform-origin: left center;
+    will-change: tranform;
+
+    z-index: 10;
 }
 
 /* logo */
@@ -43,6 +67,8 @@ nav-wrap
     display: flex;
     flex-direction: column;
     gap: 5vh;
+
+    z-index: 15; /* .nav-honey 보다 z-index 높게 설정 */
 }
 
 .menu-item {
@@ -57,7 +83,6 @@ nav-wrap
 .menu-text {
     color: var(--Grey3, #8c8985);
 }
-
 
 /* chatbot */
 .chatbot-wrap {
