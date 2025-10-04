@@ -106,9 +106,9 @@ window.initMap = async function () {
 
         // 6. 개화 예상 지역 표시 (bloom_area.js 모듈 사용)
         const bloomAreasData = [
-            { id: 1, name: "개화 예상 지역 1", lat: 28.571, lng: -81.165, radius: 500, info: "군집 1" },
-            { id: 2, name: "개화 예상 지역 2", lat: 28.560, lng: -81.155, radius: 300, info: "군집 2" },
-            { id: 3, name: "개화 예상 지역 3", lat: 28.568, lng: -81.175, radius: 450, info: "군집 3" }
+            { id: 1, name: "개화 예상 지역 1", lat: 28.598, lng: -81.147, radius: 1500, info: "군집 1" },
+            { id: 2, name: "개화 예상 지역 2", lat: 28.531, lng: -81.119, radius: 1000, info: "군집 2" },
+            { id: 3, name: "개화 예상 지역 3", lat: 28.540, lng: -81.225, radius: 2000, info: "군집 3" }
         ];
         window.BloomArea.create(map, bloomAreasData);
 

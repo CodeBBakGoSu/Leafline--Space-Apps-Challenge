@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community | BloomBee</title>
+    
+    <!-- Common stylesheets from other pages -->
+    <link rel="stylesheet" href="../css/font.css" />
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <!-- Page-specific stylesheet -->
+    <link rel="stylesheet" href="../css/community.css">
+    
+    <link rel="icon" type="image/png" href="../img/logo/favicon.png" />
+</head>
+<body>
+    <div class="page-wrap">
+        <!-- Sidebar Start (from index.html) -->
+        <div class="nav-wrap">
+            <div class="nav">
+                <div class="logo">
+                    <img src="../img/logo/logo_small.png" class="logo-img" width="150px" />
+                </div>
+                <div class="menu">
+                    <div class="menu-item" data-page="dashboard">
+                        <div class="menu-img">
+                            <img src="../img/icon_common/icon_nav_dashboard_gray.png" width="40px" />
+                        </div>
+                        <div class="menu-text font-m">Dashboard</div>
+                    </div>
+                    <div class="menu-item" data-page="calendar">
+                        <div class="menu-img">
+                            <img src="../img/icon_common/icon_nav_calendar_gray.png" width="40px" />
+                        </div>
+                        <div class="menu-text font-m">Calendar</div>
+                    </div>
+                    <div class="menu-item active" data-page="community">
+                        <div class="menu-img">
+                            <img src="../img/icon_common/icon_nav_community_gray.png" width="40px" />
+                        </div>
+                        <div class="menu-text font-m">Community</div>
+                    </div>
+                    <div class="menu-item" data-page="setting">
+                        <div class="menu-img">
+                            <img src="../img/icon_common/icon_nav_setting_gray.png" width="40px" />
+                        </div>
+                        <div class="menu-text font-m">Setting</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-wrap">
+                <div class="chatbot">
+                    <div class="chatbot-item">
+                        <div class="line">
+                            <hr width="140px" />
+                        </div>
+                        <div class="chatbot-menu" data-page="chatbot">
+                            <div class="menu-img">
+                                <img src="../img/icon_common/icon_nav_chatbot_gray.png" width="40px" />
+                            </div>
+                            <div class="menu-text font-m">Bloom Ai</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sidebar End -->
+
+        <!-- Main Content Start -->
+        <div id="dBody">
+            <div class="container">
+                <header>
+                    <h1>Community</h1>
+                    <button id="write-post-btn">Write Post</button>
+                </header>
+                <main>
+                    <ul id="post-list">
+                        <!-- Posts will be dynamically added here by JavaScript -->
+                    </ul>
+                </main>
+            </div>
+    
+            <!-- Modal for new post -->
+            <div id="post-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>New Post</h2>
+                    <form id="post-form">
+                        <input type="text" id="post-title" placeholder="Title" required>
+                        <textarea id="post-content" placeholder="Content" rows="10" required></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Main Content End -->
+    </div>
+
+    <script src="../js/community.js"></script>
+    <script>
+        // Navigation script (from index.html)
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuItems = document.querySelectorAll(".menu-item");
+
+            menuItems.forEach((item) => {
+                item.addEventListener("click", () => {
+                    const page = item.getAttribute("data-page");
+
+                    switch (page) {
+                        case "dashboard":
+                            window.location.href = "dashboard.html";
+                            break;
+                        case "calendar":
+                            window.location.href = "calendar.html";
+                            break;
+                        case "community":
+                            // Already on the community page, do nothing.
+                            break;
+                        case "setting":
+                            alert("Setting page is under construction.");
+                            break;
+                    }
+                });
+                item.style.cursor = "pointer";
+            });
+
+            const logo = document.querySelector(".logo-img");
+            if(logo) {
+                logo.style.cursor = "pointer";
+                logo.addEventListener("click", () => {
+                    window.location.href = "../index.html"; // Go to main index
+                });
+            }
+        });
+    </script>
+</body>
+</html>
