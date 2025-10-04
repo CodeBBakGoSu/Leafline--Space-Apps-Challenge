@@ -32,7 +32,6 @@ app.include_router(profile_router, prefix="")
 app.include_router(todo_router, prefix="")
 app.include_router(weather_router, prefix="")
 
-
 @app.get("/", tags=["Root"])
 async def root():
     """루트 엔드포인트"""

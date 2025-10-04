@@ -18,4 +18,7 @@ class TodoCreate(BaseModel):
     content : str
     duration : str
 
+class TodoUpdate(BaseModel):
+    id : str
+    completed: bool
 
