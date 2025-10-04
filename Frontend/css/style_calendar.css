@@ -19,7 +19,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(3px); /* 블러 */
     z-index: 5;
 }
@@ -28,8 +28,7 @@ body {
 .CalArea {
     max-width: 1200px;
     margin: 0 auto;
-    background-color: #f76161;
-    border: 10px solid #000;
+    /* border: 10px solid #000; */
     position: relative; /* z-index 적용을 위해 */
     z-index: 1;
     border: 0px;
@@ -42,8 +41,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid #000;
-    background-color: pink;
 }
 
 .title {
@@ -52,14 +49,8 @@ body {
     display: flex;
 }
 
-
-.navigation a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: #000;
-    background-color: yellow;
- 
-}
+.title h1{font-size: 26px;}
+.title p{font-size: 16px; margin: 10px 20px;}
 
 
 /* 메인 컨텐츠 영역 */
@@ -72,47 +63,44 @@ body {
 /* 캘린더 박스*/
 .calendar-container {
     flex-grow: 1;
-    /*padding: 20px;*/ /*추후 common.html이랑 병합 할 때 보고 조정하기*/
     border-right: 0px;
     border-radius: 16px;
-    background-color: #ff1eb4;
-    
+    background-color: #fff;
 }
-
-/*캘린더 박스 윗부분 텍스트 들어가는곳*/
-.calendar-container-head {display: flex;}
 
 /*캘린더 헤더*/
 .header{
-    background-color: rgb(216, 255, 43); 
+    background-color: #fff; 
     display: flex; 
-    height: 60px; 
-    border: 0px;
-    border-radius: 16px 16px 0px 0px;}
+    height: 60px;
+}
 
 /*헤더-월 이동BT*/
 .head-moveBt {
     width: 50%;
-    background-color: #88f521;
-    padding: 7px 20px 7px 70px;
+    padding: 0px 20px 0px 50px;
     align-items: end;
     border: 0px;
-    border-radius: 0px 16px 0px 0px;
     z-index: 4; /*오버레이의 z-index가 5이기 떄문에 밑에 깔으려고 4로 설정*/
 }
 .calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /* margin: 0px; */
+    height: 100%;
+    margin: 0px;
+    /* display: flex; */
+    /* justify-content: space-between; */
 }
 
-.calendar-header button {
-    border: none;
-    background: none;
-    font-size: 24px;
-    cursor: pointer;
+/* 월 선택 아이콘 사이즈 */
+.calendar-header img{scale: 0.13;
+position: fixed;
+    top: -30px;
+    left: 760px;
 }
 
+/* .prevMonth, .nextMonth{ margin-top: -15px;} */
+
+/* 캘린더 그리드 */
 .calendar-grid, .calendar-dates {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -127,7 +115,7 @@ body {
 /*캘린더 일 구분 표시선*/
 .date-cell {
     border: 1px solid #ccc8c2;
-    height: 120px;
+    height: 140px;
     padding: 5px;
     font-size: 14px;
     cursor: pointer;
@@ -153,9 +141,10 @@ body {
 /* 할 일(투두리스트) 아이템 스타일 */
 .todo-item {
     font-size: 12px;
-    background-color: #e0f7fa;
-    border-radius: 4px;
-    padding: 3px 5px;
+    background-color: #232323;
+    color: #ffb246; /*-------------------------------------------------------------------------------------------------------------*/
+    border-radius: 15px;
+    padding: 0px 10px;
     margin-top: 4px;
     text-align: left;
     white-space: nowrap;
@@ -167,20 +156,21 @@ body {
 /* 사이드바 */
 .sidebar {
     width: 300px;
+    height: 805px;
     padding: 20px;
     position: relative;
     z-index: 1;
     transition: z-index 0.1s;
-    background-color: #01018b;
+    background-color: #f7f5f2;
     border: 0px;
     border-radius: 16px;
-    margin: 0px 30px;
+    margin: 0px 25px;
 }
 
 /* 날짜가 선택되었을 때의 날짜칸 스타일 */
 .date-cell.selected {
     background-color: #fff;
-    border: 2px solid #00ff15;
+    border: 2px solid #b9e5ff;
     z-index: 10; /* 오버레이 위로 올라오도록 */
 }
 
@@ -201,11 +191,13 @@ body {
     border: 0px;
     border-radius: 8px;
     margin-bottom: 20px;
-    padding: 15px;
+    padding: 10px;
     cursor: pointer;
-    background-color: #24c1ff;
+    background-color: #ccc8c2;
     transition: background-color 0.2s;
     text-align: center;
+    color: #fff;
+    line-height:20px;
 }
 
 /*사이드바 태스크-텍스트박스 속성*/
@@ -213,38 +205,43 @@ body {
     border: 0px;
     text-align: center;
     cursor: pointer;
-    background-color: #b81fff;
 }
 
-.sidebar-item:hover {
-    background-color: #f1f1f1;
+.sidebar-item:hover { /*pix*/
+    background-color: #ffb246;
 }
 
 /* 사이드바 항목이 선택되었을 때의 스타일 */
 .sidebar-item.selected {
-    background-color: #d1e7fd;
+    background-color: #ffb246;
     border-color: #d16fff;
     font-weight: bold;
 }
 
-/*확인 버튼*/
+/*리스트플러스 BT*/
+.sidebar-itam-plus div p{font-size: 32px; margin-top: 12px;}
+
+/*OK 버튼*/
 .confirm-btn {
     width: 100%;
+    height: 100px;
     padding: 15px;
     background-color: #fff;
     color: #ccc;
     border: 0px solid #000;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 160px;
     transition: background-color 0.2s;
 }
 
 /*확인 버튼 후버*/
 .confirm-btn:hover {
-    background-color: #555;
+    background-color: #232323;
+    font-size: 25px;
+    transition: background-color 0.2s;
 }
 
 /*리스트 항목 내 아이콘 이미지*/
