@@ -142,14 +142,30 @@ position: fixed;
 .todo-item {
     font-size: 12px;
     background-color: #232323;
-    color: #ffb246; /*-------------------------------------------------------------------------------------------------------------*/
+    color: #ffb246;
     border-radius: 15px;
     padding: 1px 10px;
     margin-top: 4px;
     text-align: left;
+    transition: opacity 0.3s ease;
     /* white-space: nowrap; */
     /* overflow: hidden; */
     /* text-overflow: ellipsis; */
+}
+
+/* AI 예측 일정 스타일 - 반투명 */
+.todo-item.ai-predicted {
+    opacity: 0.4;
+    font-style: italic;
+    background-color: rgba(35, 35, 35, 0.6);
+    color: rgba(255, 178, 70, 0.7);
+    border: 1px dashed rgba(255, 178, 70, 0.3);
+}
+
+/* AI 예측 일정 호버 시 진하게 */
+.todo-item.ai-predicted:hover {
+    opacity: 0.8;
+    cursor: pointer; /* 클릭 가능하다는 것을 표시 */
 }
 
 
@@ -160,11 +176,17 @@ position: fixed;
     padding: 20px;
     position: relative;
     z-index: 1;
-    transition: z-index 0.1s;
     background-color: #f7f5f2;
     border: 0px;
     border-radius: 16px;
     margin: 0px 25px;
+    
+    /* 아래에서 위로 슬라이드 애니메이션 */
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.4s ease, 
+                z-index 0.1s;
 }
 
 /* 날짜가 선택되었을 때의 날짜칸 스타일 */
@@ -174,9 +196,11 @@ position: fixed;
     z-index: 10; /* 오버레이 위로 올라오도록 */
 }
 
-/* 사이드바가 활성화되었을 때의 스타일 */
+/* 사이드바가 활성화되었을 때의 스타일 - 아래에서 위로 슉! */
 .sidebar.active {
     z-index: 10; /* 오버레이 위로 올라오도록 */
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .sidebar h4 {
@@ -194,7 +218,7 @@ position: fixed;
     padding: 10px;
     cursor: pointer;
     background-color: #ccc8c2;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
     text-align: center;
     color: #fff;
     line-height:20px;
@@ -216,6 +240,8 @@ position: fixed;
     background-color: #ffb246;
     border-color: #d16fff;
     font-weight: bold;
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* 한줄짜리 이벤트리스트 가운데정렬 가운데맞춤 */
