@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="css/font.css" />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="css/todoList.css" />
         <link rel="stylesheet" href="css/chat.css" />
         <link rel="icon" type="image/png" href="img/logo/favicon.png" />
     </head>
@@ -67,17 +68,51 @@
         </div>
         <div id="dBody">
             <div class="body-container">
-                <div class="top">
-                    <div class="greeting-container">greeting</div>
-                    <div class="notification-container">notification</div>
-                </div>
-                <div class="middle">
-                    <div class="to-do-container">todo</div>
-                    <div class="weather-container">weather</div>
-                </div>
-                <div class="bottom">
-                    <!-- html include -->
-                </div>
+                <!-- 상단 8%: 인사말 + 위치 + 알림 -->
+                <header class="header-section">
+                    <div class="greeting-group">
+                        <h1 class="greeting-text">Good morning, Alex 👋</h1>
+                        <div class="location-info">
+                            <img src="img/icon_common/icon_location_small_gray.png" alt="location" width="16" height="16" />
+                            <span>Alex's Honey • Orlando, FL</span>
+                        </div>
+                    </div>
+                    <div class="notification-icon">
+                        <img src="img/icon_common/icon_notification.png" alt="notification" width="20" height="20" />
+                    </div>
+                </header>
+
+                <!-- 중단 25%: Todo 60% + Weather 40% -->
+                <section class="middle-section">
+                    <div class="todo-section">
+                        <div class="todo-frame-wrapper">
+                            <iframe
+                                class="todo-frame"
+                                src="pages/todoList.html"
+                                title="Daily to do list"
+                                loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="weather-section">
+                        <div class="weather-placeholder">
+                            <strong>Weather space reserved</strong>
+                            <span>날씨 위젯은 추후에 추가할 예정입니다.</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 하단 67%: Dashboard / Calendar -->
+                <section class="bottom-section">
+                    <span class="view-label">Dashboard / Calendar</span>
+                    <div class="frame-wrapper">
+                        <iframe
+                            id="contentFrame"
+                            class="scaled-frame"
+                            src="pages/dashboard.html"
+                            title="BloomBee content"
+                            loading="lazy"></iframe>
+                    </div>
+                </section>
             </div>
         </div>
 
@@ -123,37 +158,57 @@
         <script src="js/index.js"></script>
         <script src="js/chat.js"></script>
         <script>
-            // 메뉴 클릭 시 페이지 이동
             document.addEventListener("DOMContentLoaded", () => {
                 const menuItems = document.querySelectorAll(".menu-item, .chatbot-menu");
+                const contentFrame = document.getElementById("contentFrame");
+                const frameScale = {
+                    dashboard: 0.78,
+                    calendar: 0.74,
+                };
+
+                function setMenuActive(targetPage) {
+                    document.querySelectorAll(".menu-item").forEach((item) => {
+                        const isActive = item.getAttribute("data-page") === targetPage;
+                        item.classList.toggle("active", isActive);
+                    });
+                }
+
+                function switchContent(page) {
+                    switch (page) {
+                        case "dashboard":
+                            contentFrame.src = "pages/dashboard.html";
+                            break;
+                        case "calendar":
+                            contentFrame.src = "pages/calendar.html";
+                            break;
+                        case "community":
+                            alert("Community 페이지는 준비 중입니다.");
+                            return;
+                        case "setting":
+                            alert("Setting 페이지는 준비 중입니다.");
+                            return;
+                        case "chatbot":
+                            openChatModal();
+                            return;
+                        default:
+                            contentFrame.src = "pages/dashboard.html";
+                    }
+
+                    const scale = frameScale[page] || frameScale.dashboard;
+                    contentFrame.style.setProperty("--frame-scale", scale);
+                    setMenuActive(page);
+                }
 
                 menuItems.forEach((item) => {
-                    item.addEventListener("click", () => {
-                        const page = item.getAttribute("data-page");
-
-                        switch (page) {
-                            case "dashboard":
-                                window.location.href = "pages/dashboard.html";
-                                break;
-                            case "calendar":
-                                window.location.href = "pages/calendar.html";
-                                break;
-                            case "community":
-                                alert("Community 페이지는 준비 중입니다.");
-                                break;
-                            case "setting":
-                                alert("Setting 페이지는 준비 중입니다.");
-                                break;
-                            case "chatbot":
-                                // 챗봇 모달 열기
-                                openChatModal();
-                                break;
-                        }
-                    });
-
-                    // 커서 포인터 추가
                     item.style.cursor = "pointer";
+                    item.addEventListener("click", () => {
+                        switchContent(item.getAttribute("data-page"));
+                    });
                 });
+
+                // 초기 상태 설정
+                contentFrame.style.setProperty("--frame-scale", frameScale.dashboard);
+                setMenuActive("dashboard");
             });
         </script>
     </body>
