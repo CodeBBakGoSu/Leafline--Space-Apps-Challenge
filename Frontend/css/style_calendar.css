@@ -249,3 +249,9 @@ position: fixed;
 
 /*리스트 항목 내 아이콘 이미지*/
 .cal-bee-icon{width: 50px;}
+
+/* 개화 꽃 아이콘 위치고정 */
+.flower1{position: fixed; top: 270px; left: 1012px; z-index: 4;}
+.flower2{position: fixed; top: 551px; left: 360px; z-index: 4;}
+.flower-text1{position: fixed; top: 295px; left:939px; z-index: 4;}
+.flower-text2{position: fixed; top: 575px; left: 290px; z-index: 4;}
