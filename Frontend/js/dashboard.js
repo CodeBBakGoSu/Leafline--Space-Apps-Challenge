@@ -26,7 +26,9 @@ $(function () {
  * Google Maps 초기화 및 사용자 위치 관리
  *
  * @requires bee_flight_range.js - 벌 비행 범위 모듈
+ * @requires bloom_area.js - 개화 예상 지역 모듈
  */
+
 
 /* ================================
    전역 변수
@@ -61,7 +63,7 @@ let userMarker;
 window.initMap = async function () {
     // 기본 위치: Orlando, Florida
     const defaultLocation = { lat: 28.5649675, lng: -81.1614906 };
-
+    
     try {
         // 1. 지도 생성
         map = new google.maps.Map(document.getElementById("map"), {
@@ -101,6 +103,14 @@ window.initMap = async function () {
 
         // 5. 벌 비행 범위 표시 (bee_flight_range.js 모듈 사용)
         window.BeeFlightRange.create(map, defaultLocation);
+
+        // 6. 개화 예상 지역 표시 (bloom_area.js 모듈 사용)
+        const bloomAreasData = [
+            { id: 1, name: "개화 예상 지역 1", lat: 28.571, lng: -81.165, radius: 500, info: "군집 1" },
+            { id: 2, name: "개화 예상 지역 2", lat: 28.560, lng: -81.155, radius: 300, info: "군집 2" },
+            { id: 3, name: "개화 예상 지역 3", lat: 28.568, lng: -81.175, radius: 450, info: "군집 3" }
+        ];
+        window.BloomArea.create(map, bloomAreasData);
 
         console.log("✅ Google Maps 초기화 완료");
     } catch (error) {
