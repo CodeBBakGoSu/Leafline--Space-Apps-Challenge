@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
 from app.routers import health
+from app.todo.router import get_todos_router
 
 from app.todo.router import get_todos_router
 from app.dashBord.weather_router import router as weather_router
