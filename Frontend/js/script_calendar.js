@@ -113,9 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 오버레이 클릭 시 비활성화
     overlay.addEventListener('click', deactivateSidebar);
-
-
+    
     // 초기 달력 렌더링
     renderCalendar();
-    
 });

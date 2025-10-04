@@ -95,7 +95,7 @@ body {
 .calendar-header img{scale: 0.13;
 position: fixed;
     top: -30px;
-    left: 760px;
+    left: 777px;
 }
 
 /* .prevMonth, .nextMonth{ margin-top: -15px;} */
@@ -180,7 +180,7 @@ position: fixed;
 }
 
 .sidebar h4 {
-    margin-bottom: 20px;
+    margin: 27px 0px;
     text-align: center;
     font-size: 20px;
 }
@@ -218,6 +218,9 @@ position: fixed;
     font-weight: bold;
 }
 
+/* 한줄짜리 이벤트리스트 가운데정렬 가운데맞춤 */
+.once{vertical-align: middle; padding: 22px 0px;}
+
 /*리스트플러스 BT*/
 .sidebar-itam-plus div p{font-size: 32px; margin-top: 12px;}
 
@@ -233,7 +236,7 @@ position: fixed;
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 160px;
+    margin-top: 130px;
     transition: background-color 0.2s;
 }
 
