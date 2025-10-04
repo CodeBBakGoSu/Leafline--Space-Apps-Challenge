@@ -41,13 +41,13 @@ let userMarker;
  */
 window.initMap = async function () {
     // 기본 위치: Orlando, Florida
-    const defaultLocation = { lat: 28.5383, lng: -81.3792 };
+    const defaultLocation = { lat: 28.5649675, lng: -81.1614906 };
 
     try {
         // 1. 지도 생성
         map = new google.maps.Map(document.getElementById("map"), {
             center: defaultLocation,
-            zoom: 11,  // 벌 비행 범위를 보기 좋게 줌 레벨 조정
+            zoom: 12.5,  // 벌 비행 범위를 보기 좋게 줌 레벨 조정
             mapTypeControl: true,      // 지도 유형 컨트롤 표시 (지도/위성)
             streetViewControl: false,  // 스트리트 뷰 비활성화
             fullscreenControl: true,   // 전체화면 버튼 표시
