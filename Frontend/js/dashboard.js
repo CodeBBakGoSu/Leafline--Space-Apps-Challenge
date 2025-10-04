@@ -292,25 +292,304 @@ dashboard.js 파일 내에서 fetch 함수를 사용하여 위 API 엔드포인�
 API로부터 받은 JSON 데이터를 사용하여 차트를 렌더링하는 로직을 구현해 주세요.
 ================================ */
 /* Chart.JS 삽입 */
-const ctx = $(".chart");
+// const ctx = $(".chart");
 
-new Chart(ctx, {
-    type: "line",
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [
-            {
-                label: "# of Votes",
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1,
-            },
+// new Chart(ctx, {
+//     type: "line",
+//     data: {
+//         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+//         datasets: [
+//             {
+//                 label: "# of Votes",
+//                 data: [12, 19, 3, 5, 2, 3],
+//                 borderWidth: 1,
+//             },
+//         ],
+//     },
+//     options: {
+//         scales: {
+//             y: {
+//                 beginAtZero: true,
+//             },
+//         },
+//     },
+// });
+
+/* ======= Blooming Chart JS (Honey 토글 복구) ======= */
+const API_URL = "/api/blooming-chart";
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const NOW = new Date();
+const NOW_IDX = NOW.getMonth(); // 0..11
+const NOW_YEAR = NOW.getFullYear();
+
+/* 폴백 데이터 */
+const FALLBACK = {
+    bloom: {
+        acacia: [
+            { month: 1, data: 0 },
+            { month: 2, data: 11 },
+            { month: 3, data: 200 },
+            { month: 4, data: 400 },
+            { month: 5, data: 280 },
+            { month: 6, data: 210 },
+            { month: 7, data: 160 },
+            { month: 8, data: 120 },
+            { month: 9, data: 60 },
+            { month: 10, data: 20 },
+            { month: 11, data: 5 },
+            { month: 12, data: 0 },
+        ],
+        almond: [
+            { month: 1, data: 0 },
+            { month: 2, data: 0 },
+            { month: 3, data: 10 },
+            { month: 4, data: 120 },
+            { month: 5, data: 260 },
+            { month: 6, data: 240 },
+            { month: 7, data: 200 },
+            { month: 8, data: 150 },
+            { month: 9, data: 130 },
+            { month: 10, data: 80 },
+            { month: 11, data: 20 },
+            { month: 12, data: 0 },
         ],
     },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true,
+    honey: [
+        { month: 1, amount: 20 },
+        { month: 2, amount: 30 },
+        { month: 3, amount: 200 },
+        { month: 4, amount: 260 },
+        { month: 5, amount: 240 },
+        { month: 6, amount: 200 },
+        { month: 7, amount: 150 },
+        { month: 8, amount: 130 },
+        { month: 9, amount: 80 },
+        { month: 10, amount: 60 },
+        { month: 11, amount: 10 },
+        { month: 12, amount: 0 },
+    ],
+};
+
+/* 비정형 JSON 정규화 */
+function normalizePayload(x) {
+    if (!x) return FALLBACK;
+    if (Array.isArray(x)) {
+        const obj = {};
+        x.forEach((it) => Object.assign(obj, it));
+        x = obj;
+    }
+    if (Array.isArray(x.bloom)) {
+        const obj = {};
+        x.bloom.forEach((it) => Object.assign(obj, it));
+        x.bloom = obj;
+    }
+    if (!x.bloom || !x.honey) return FALLBACK;
+    return x;
+}
+
+function months12() {
+    return Array.from({ length: 12 }, (_, i) => i + 1);
+}
+function getBloomSeries(payload, species) {
+    const arr = payload?.bloom?.[species] ?? [];
+    const m = new Map(arr.map((o) => [o.month, o.data]));
+    return months12().map((mm) => m.get(mm) ?? 0);
+}
+function getHoneySeries(payload) {
+    const arr = payload?.honey ?? [];
+    const m = new Map(arr.map((o) => [o.month, o.amount]));
+    return months12().map((mm) => m.get(mm) ?? 0);
+}
+
+/* ---------- X축 롤링: 왼쪽 시작 = 현재-3 ---------- */
+const START_IDX = (NOW_IDX + 12 - 3) % 12; // 가장 왼쪽은 현재-3개월
+const VISIBLE_TICKS = [0, 3, 6, 9]; // 4개의 눈금만 노출
+const CURRENT_POS = 3; // 두 번째 눈금(현재)의 위치
+
+function rotate12(arr, startIdx) {
+    return [...arr.slice(startIdx), ...arr.slice(0, startIdx)];
+}
+
+/* 눈금 라벨: (현재-3)+i 개월의 YYYY Mon */
+function labelDateForIndex(i) {
+    const base = new Date(NOW_YEAR, NOW_IDX - 3, 1);
+    const d = new Date(base.getFullYear(), base.getMonth() + i, 1);
+    return `${d.getFullYear()} ${MONTHS[d.getMonth()]}`;
+}
+
+/* 과거/예측 구분: 회전된 축 기준으로 현재 이후는 점선 */
+function segDashRolled(ctx) {
+    const right = ctx.p1DataIndex;
+    return right >= CURRENT_POS ? [6, 6] : undefined;
+}
+
+/* 차트 인스턴스 */
+let chart = null;
+
+/* Honey on/off */
+function addHoneyDataset(dataRolled) {
+    const accent = "#ffca80"; // 원래 코드 색상 유지 (요청대로 체크박스만 복구)
+    const ds = {
+        type: "bar",
+        label: "Honey",
+        data: dataRolled,
+        yAxisID: "y2",
+        backgroundColor: accent,
+        borderColor: accent,
+        borderRadius: 6,
+        barPercentage: 0.6,
+        categoryPercentage: 0.7,
+    };
+    const i = chart.data.datasets.findIndex((d) => d.label === "Honey");
+    if (i >= 0) chart.data.datasets[i] = ds;
+    else chart.data.datasets.push(ds);
+    chart.options.scales.y2.display = true;
+    chart.update();
+}
+function removeHoneyDataset() {
+    chart.data.datasets = chart.data.datasets.filter((d) => d.label !== "Honey");
+    chart.options.scales.y2.display = false;
+    chart.update();
+}
+
+/* -------------------- 차트 생성 -------------------- */
+function buildChart(bloomData, honeyData) {
+    const ctxEl = document.querySelector("#chartBox canvas.chart");
+    if (!ctxEl) {
+        console.error("canvas not found");
+        return;
+    }
+    const ctx = ctxEl.getContext("2d");
+    if (chart) chart.destroy();
+
+    // 12개월 롤링 데이터 & 라벨
+    const labelsRolling = rotate12(MONTHS, START_IDX);
+    const bloomRolling = rotate12(bloomData, START_IDX);
+    const honeyRolling = rotate12(honeyData, START_IDX);
+
+    chart = new Chart(ctx, {
+        data: {
+            labels: labelsRolling, // 실제 라벨은 tick callback에서 4개만 출력
+            datasets: [
+                {
+                    type: "line",
+                    label: "Past / Predict",
+                    data: bloomRolling,
+                    yAxisID: "y",
+                    borderColor: "#2f78ff",
+                    borderWidth: 3,
+                    backgroundColor: "transparent",
+                    tension: 0, // ← 완전히 각진 꺾은선
+                    pointRadius: 0,
+                    pointHoverRadius: 0,
+                    segment: { borderDash: segDashRolled },
+                },
+            ],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: "top",
+                    labels: {
+                        usePointStyle: true,
+                        /*pointStyle: "line"*/ boxWidth: 14,
+                        boxHeight: 14,
+                        generateLabels(chart) {
+                            // 기본 라벨 생성
+                            const defaultGen = Chart.defaults.plugins.legend.labels.generateLabels;
+                            const labels = defaultGen(chart);
+
+                            // Honey 라벨만 둥근 정사각형 + 노란색으로 커스텀
+                            return labels.map((l) => {
+                                if (l.text === "Honey") {
+                                    l.pointStyle = "rectRounded";
+                                    l.fillStyle = "#ffca80";
+                                    l.strokeStyle = "#ffca80";
+                                    l.lineWidth = 1;
+                                } else if (l.text === "Past / Predict") {
+                                    l.pointStyle = "line";
+                                }
+                                return l;
+                            });
+                        },
+                    },
+                }, // 범례 유지
+                tooltip: { mode: "index", intersect: false },
+            },
+            interaction: { mode: "index", intersect: false },
+            scales: {
+                y: {
+                    position: "left",
+                    title: { display: true, text: "Bloom Amount" },
+                    grid: { display: false }, // 가로선 없음
+                    border: { display: false },
+                    ticks: { color: "#6b7280" },
+                },
+                y2: {
+                    display: false,
+                    position: "right",
+                    title: { display: true, text: "Honey Amount" },
+                    grid: { drawOnChartArea: false },
+                    border: { display: false },
+                    ticks: { color: "#6b7280" },
+                },
+                x: {
+                    // 세로 그리드: 4 지점만 표시(실선 1px #ccc8c2)
+                    grid: {
+                        drawBorder: false,
+                        drawTicks: false,
+                        lineWidth: 1,
+                        color: (ctx) => (VISIBLE_TICKS.includes(ctx.index) ? "#ccc8c2" : "transparent"),
+                    },
+                    ticks: {
+                        padding: 8,
+                        // 현재(두 번째 눈금: CURRENT_POS)만 색 바꾸려면 아래 주석 해제
+                        color: (ctx) => (ctx.index === CURRENT_POS ? "#ffb246" : "#6b7280"),
+                        callback: (val, idx) => (VISIBLE_TICKS.includes(idx) ? labelDateForIndex(idx) : ""),
+                    },
+                },
             },
         },
-    },
-});
+    });
+
+    // 초기 토글 반영
+    if ($("#toggleHoney").prop("checked")) addHoneyDataset(honeyRolling);
+
+    // 토글 이벤트 바인딩
+    $("#toggleHoney")
+        .off("change")
+        .on("change", function () {
+            if (this.checked) addHoneyDataset(honeyRolling);
+            else removeHoneyDataset();
+        });
+}
+
+/* -------------------- 초기화 -------------------- */
+(async function init() {
+    // ✅ Honey 체크박스를 원래처럼 .title-radio 영역에 삽입
+    $(".title-radio")
+        .empty()
+        .append(
+            '<label class="honey-toggle"><input type="checkbox" id="toggleHoney"> <span class="text">Honey</span></label>'
+        );
+
+    let payload;
+    try {
+        const r = await fetch(API_URL, { headers: { Accept: "application/json" } });
+        if (!r.ok) throw new Error(`bad status ${r.status}`);
+        payload = await r.json();
+    } catch (e) {
+        console.warn("API failed, using FALLBACK:", e);
+        payload = FALLBACK;
+    }
+    payload = normalizePayload(payload);
+
+    const bloomData = getBloomSeries(payload, "almond");
+    const honeyData = getHoneySeries(payload);
+
+    buildChart(bloomData, honeyData);
+})();

@@ -228,7 +228,6 @@ input:focus + .slider {
 }
 
 /* Blooming Area CheckBox */
-
 #mapCheckBox {
     position: absolute;
     display: flex;
@@ -319,6 +318,28 @@ input:focus + .slider {
     padding: 20px;
 }
 
+/* Honey 토글 */
+.title-radio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.honey-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+.honey-toggle input {
+    width: 16px;
+    height: 16px;
+}
+.honey-toggle .text {
+    color: #ff8a00;
+    font-weight: 600;
+}
+
 /* 차트 내용 title */
 .box-title .title-main h1 {
     font-size: 28px;
@@ -339,3 +360,10 @@ input:focus + .slider {
     width: 100% !important;
     height: 87% !important;
 }
+
+.chart {
+    width: 100% !important;
+    height: 87% !important;
+}
+
+
