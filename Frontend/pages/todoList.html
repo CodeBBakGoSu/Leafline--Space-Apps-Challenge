@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily to_do_list - Leafline</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/font.css" />
+    <link rel="stylesheet" href="../css/todoList.css" />
+    <link rel="icon" type="image/png" href="../img/logo/favicon.png" />
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <div class="todo-header">
+            <h1 class="todo-title">Daily to do List</h1>
+            <span class="todo-count">(<span id="completedCount">1</span>/<span id="totalCount">3</span>)</span>
+        </div>
+
+        <!-- TODO 리스트 -->
+        <div class="todo-list" id="todoList">
+            <!-- 기존 TODO 항목들 -->
+            <div class="todo-item" data-completed="true">
+                <div class="todo-content">
+                    <h3 class="todo-task-title">Hive Inspection</h3>
+                </div>
+                <button class="todo-check-btn checked">
+                    <img src="../img/to_do_list/todo_btn_checked.png" alt="checked">
+                </button>
+            </div>
+
+            <div class="todo-item" data-completed="false">
+                <div class="todo-content">
+                    <h3 class="todo-task-title">Pollen Patty Feeding</h3>
+                </div>
+                <button class="todo-check-btn">
+                    <img src="../img/to_do_list/todo_btn_unchecked.png" alt="unchecked">
+                </button>
+            </div>
+
+            <div class="todo-item" data-completed="false">
+                <div class="todo-content">
+                    <h3 class="todo-task-title">Check Queen Bee Status and Egg Laying Pattern</h3>
+                </div>
+                <button class="todo-check-btn">
+                    <img src="../img/to_do_list/todo_btn_unchecked.png" alt="unchecked">
+                </button>
+            </div>
+        </div>
+
+        <!-- 추가 버튼 영역 -->
+        <div class="add-section">
+            <!-- 입력창 컨테이너 (처음엔 원형 버튼) -->
+            <div class="add-input-container circle" id="addContainer">
+                <!-- AI 추천 버튼 (확장 시 왼쪽에 표시) -->
+                <button class="ai-recommend-btn" id="aiBtn" style="display: none;">
+                    <img src="../img/to_do_list/todo_ai_butten.png" alt="AI Recommend">
+                </button>
+
+                <!-- 입력창 (확장 시 표시) -->
+                <input 
+                    type="text" 
+                    class="add-input" 
+                    id="todoInput" 
+                    placeholder="text"
+                    style="display: none;"
+                >
+
+                <!-- + 버튼 (원형 상태) / X 버튼 (확장 상태) -->
+                <button class="add-btn" id="addBtn">
+                    <img src="../img/to_do_list/todo_btn_add.png" alt="Add">
+                </button>
+            </div>
+
+            <!-- AI 추천 옵션 영역 (동적으로 표시) -->
+            <div class="ai-options-container" id="aiOptionsContainer" style="display: none;">
+                <div class="ai-options-list" id="aiOptionsList">
+                    <!-- AI 추천 옵션이 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/todoList.js"></script>
+</body>
+</html>
