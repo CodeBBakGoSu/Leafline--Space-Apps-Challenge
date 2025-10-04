@@ -183,9 +183,7 @@ select {
 }
 
 .toggle-label {
-    color: #666;
-    font-weight: 500;
-    font-size: 14px;
+    /* font-size: 14px; */
     user-select: none;
     cursor: pointer;
 }
@@ -206,7 +204,7 @@ select {
 }
 
 /* 슬라이더 배경 */
-.slider {
+.slider { 
     position: absolute;
     cursor: pointer;
     top: 0;
