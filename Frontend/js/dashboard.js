@@ -273,5 +273,34 @@ if (beeRangeToggleCheckbox) {
 }
 
 /* ================================
-   Blooming Area 체크박스
+    Chart JSON 받아오기
+
+URL: /chart/get_bloom_watch
+HTTP Method: GET
+
+dashboard.js 파일 내에서 fetch 함수를 사용하여 위 API 엔드포인트를 호출해 주세요.
+API로부터 받은 JSON 데이터를 사용하여 차트를 렌더링하는 로직을 구현해 주세요.
 ================================ */
+/* Chart.JS 삽입 */
+const ctx = $(".chart");
+
+new Chart(ctx, {
+    type: "line",
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [
+            {
+                label: "# of Votes",
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1,
+            },
+        ],
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    },
+});
