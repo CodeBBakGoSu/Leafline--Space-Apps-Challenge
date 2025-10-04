@@ -347,12 +347,18 @@ input:focus + .slider {
     padding: 0;
 }
 
+/* 일단 추가해보기... */
 .box-chart {
     width: 100%;
     height: 100%;
     position: relative;
     padding: 18px;
     box-sizing: border-box;
+}
+
+.chart {
+    width: 100% !important;
+    height: 87% !important;
 }
 
 .chart {
