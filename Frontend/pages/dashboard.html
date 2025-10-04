@@ -44,11 +44,11 @@
                         <div class="map-menu">
                             <!-- 벌 비행 범위 토글 추가 -->
                             <div class="bee-range-toggle">
+                                <span class="toggle-label font-m font-black">🐝Bee Range</span>
                                 <label class="switch">
                                     <input type="checkbox" id="beeRangeToggle" checked>
                                     <span class="slider"></span>
-                                </label>
-                                <span class="toggle-label font-m">🐝 Bee Range</span>
+                                </label>                                
                             </div>
                             
                             <div class="dropdown">
@@ -67,17 +67,30 @@
                             </div>
                         </div>
                     </div>
+                    <!-- map-item 끝 -->
                     <div class="map-item">
-                        <div id="map" style="width: 100%; height: 500px; border-radius: 10px; overflow: hidden;">
+                        <div id="map" style="width: 100%; height: 80vh; border-radius: 10px; overflow: hidden;">
                             <!-- Google Maps가 여기에 렌더링됩니다 -->
                         </div>
-                        <!-- <div id="sizeBtn">
-                            <img src="../img/live map/livemap_btn_size_plus.png" width="35px">
-                            <img src="../img/live map/livemap_btn_size_minus.png" width="35px">
-                        </div> -->
+                        
+                        <!-- Bloom Visualization Checkbox -->
+
+                    </div>
+                    <!-- map-item 끝 -->
+                </div>
+                <!-- map-container 끝 -->
+
+                <div class="chart-container">
+                    <div class="chart-item">
+                        <div class="chart-title">
+                            <h1 class="font-title">Chart Visualization</h1>
+                        </div>
+                    </div>
+                    <div class="chart-item" id="chartBox"> <!-- 박스 -->
+                        <div class=""
                     </div>
                 </div>
-                <div class="chart-container"></div>
+                <!-- chart-container 끝 -->
             </div>
         </div>
   </body>
