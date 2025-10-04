@@ -20,16 +20,22 @@ nav-wrap
 /*------------------------------------------------*/
 /* navigation bar */
 .nav-wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
     width: 180px;
-    height: 100vh;
     display: flex;
     flex-direction: column;
+    background: var(--Black, #191918);
+    z-index: 1000;
 }
 
 .nav {
     display: flex;
     flex-direction: column;
-    gap: 10vh; /* 로고와 메뉴들 간 간격 설정 */
+    justify-content: space-between; /* 로고는 위, 메뉴는 아래로 분리 */
+    height: 100%; /* 전체 높이 사용 */
 }
 
 /* logo */
@@ -91,18 +97,6 @@ nav-wrap
 .chatbot-menu {
     display: flex;
     align-items: center;
-}
-
-/*------------------------------------------------*/
-/* dBody */
-.body-container {
-    width: calc(100vw-180px);
-    height: calc(100vh-40px);
-    background-color: #fff;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    border-radius: 20px;
 }
 
 /*------------------------------------------------*/

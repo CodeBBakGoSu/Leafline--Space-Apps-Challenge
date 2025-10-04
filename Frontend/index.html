@@ -162,8 +162,8 @@
                 const menuItems = document.querySelectorAll(".menu-item, .chatbot-menu");
                 const contentFrame = document.getElementById("contentFrame");
                 const frameScale = {
-                    dashboard: 0.78,
-                    calendar: 0.74,
+                    dashboard: 0.8,
+                    calendar: 0.8,
                 };
 
                 function setMenuActive(targetPage) {
@@ -209,6 +209,9 @@
                 // 초기 상태 설정
                 contentFrame.style.setProperty("--frame-scale", frameScale.dashboard);
                 setMenuActive("dashboard");
+                
+                // 페이지 전체를 80%로 축소
+                document.body.style.zoom = "0.9";
             });
         </script>
     </body>
