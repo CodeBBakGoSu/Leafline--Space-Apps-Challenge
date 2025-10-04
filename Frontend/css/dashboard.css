@@ -1,0 +1,67 @@
+/* =========================================
+        Live Map, Chart Visualization
+========================================= */
+.subpage-wrap {
+    border: 2px;
+    border-color: red;
+}
+
+.page-item {
+    display: flex;
+}
+
+.map-container {
+    display: flex;
+    justify-content: row;
+}
+
+/* ================================= */
+/* Live Map 영역 */
+.map-item {
+    display: flex;
+    gap: 70px;
+}
+
+.map-menu {
+    display: flex;
+    margin-left: auto;
+}
+
+/* toggle */
+.toggleSwitch {
+    width: 200px;
+    height: 40px;
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    background-color: #f7f5f2;
+    /* box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%); */
+    cursor: pointer;
+    /* margin: 30px; */
+}
+
+/* toggle button */
+.toggleSwitch .toggleButton {
+    width: 90px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+    border-radius: 5px;
+    background: #f03d3d;
+}
+
+#toggle:checked ~ .toggleSwitch {
+    background: #f03d3d;
+}
+
+#toggle:checked ~ .toggleSwitch .toggleButton {
+    left: calc(100% - 44px);
+    background: #fff;
+}
+
+.toggleSwitch,
+.toggleButton {
+    transition: all 0.2s ease-in;
+}

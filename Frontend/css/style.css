@@ -1,0 +1,122 @@
+/*********************
+style.css
+- 전체에 공통적으로 적용되는 CSS 속성 정의
+전체 초기화
+page-wrap
+nav-wrap 
+*********************/
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+/* 전체 페이지 */
+.page-wrap {
+    width: 100vw;
+    height: 100vh;
+    background: var(--Black, #191918);
+}
+
+/*------------------------------------------------*/
+/* navigation bar */
+.nav-wrap {
+    width: 180px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10vh; /* 로고와 메뉴들 간 간격 설정 */
+}
+
+/* logo */
+.logo {
+    padding-top: 20px;
+    padding-left: 10px;
+}
+
+/* 4 menus */
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+}
+
+.menu-img {
+    padding: 0px 10px 0px 15px;
+}
+
+.menu-text {
+    color: var(--Grey3, #8c8985);
+}
+
+
+/* chatbot */
+.chatbot-wrap {
+    margin-top: auto; /* chatbot은 모니터 화면 크기 관계없이 항상 아래쪽에 배치 */
+    padding-bottom: 20px;
+}
+
+.chatbot {
+    display: flex;
+    gap: 20px;
+}
+
+.chatbot-item {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-content: flex-end;
+}
+
+.chatbot-item .line {
+    padding-left: 20px;
+}
+
+.chatbot-item .line hr {
+    border-radius: 2px;
+    height: 1.5px;
+    border: 0;
+    background: var(--Grey3, #8c8985);
+}
+
+.chatbot-menu {
+    display: flex;
+    align-items: center;
+}
+
+/*------------------------------------------------*/
+/* dBody */
+.body-container {
+    width: calc(100vw-180px);
+    height: calc(100vh-40px);
+    background-color: #fff;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 20px;
+}
+
+/*------------------------------------------------*/
+/* top */
+.top-wrap {
+    position: fixed;
+}
+
+/*------------------------------------------------*/
+/* middle */
+.middle-wrap {
+}
+
+/*------------------------------------------------*/
+/* bottom */
+.bottom-wrap {
+}
