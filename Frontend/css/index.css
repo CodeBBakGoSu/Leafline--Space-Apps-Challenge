@@ -23,7 +23,7 @@
     background: #ffffff;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28);
+    /* box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28); */
     margin: 20px; /* dBody 검은 배경이 보이도록 여백 추가 */
     height: calc(100% - 40px); /* 여백을 고려한 높이 조정 */
 }
@@ -96,7 +96,7 @@
 }
 
 .todo-frame {
-    --todo-scale: 0.60;
+    --todo-scale: 0.6;
     width: calc(100% / var(--todo-scale));
     height: calc(120% / var(--todo-scale));
     border: none;

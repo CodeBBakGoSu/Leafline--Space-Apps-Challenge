@@ -45,31 +45,27 @@ window.API_BASE_URL = API_BASE_URL;
 /**
  * menu 선택 시 메뉴바 이동
  */
-// 추후 애니메이션
-// nav-honey 이동 애니메이션 (단순 로직)
 (function () {
     const honey = document.querySelector(".nav-honey");
     const menuItems = document.querySelectorAll(".menu .menu-item");
-    const nav = document.querySelector(".nav");
     if (!honey || !menuItems.length) return;
 
-    // 이동을 금지할 메뉴 data-page 목록 (Setting 금지)
+    // 이동 금지 대상
     const DISABLED_PAGES = new Set(["setting"]);
 
-    // 초기값(마커가 dashboard에 맞춰져 있다고 가정)
-    const HONEY_ORG = { width: 190, left: 7 }; // px
-    const HONEY_SHRINK = { width: /*150*/ 0, left: /*25*/ 200 }; // "오른쪽으로 줄어든" 느낌
+    // 초기 파라미터
+    const HONEY_ORG = { width: 190, left: 18}; // px
+    const HONEY_SHRINK = { width: 0, left: 200 }; // px
     const DUR = { shrink: 160, move: 260, expand: 200 }; // ms
-
-    // 대시보드 메뉴와 마커의 상대 위치를 기준 오프셋으로 삼음
-    const baseOffset = honey.offsetTop - menuItems[0].offsetTop;
 
     let currentIndex = 0;
     let animating = false;
 
-    // 목표 top 계산(세로 가운데 정렬이 필요하면 여기서 미세 조정)
+    // ★ 메뉴 아이템의 세로 '중앙'에 nav-honey가 오도록 top 계산
     function targetTopFor(item) {
-        return item.offsetTop + baseOffset;
+        const mid = item.offsetTop + item.offsetHeight / 2;
+        const t = Math.round(mid - honey.offsetHeight / 2);
+        return t;
     }
 
     function animateTo(index) {
@@ -78,19 +74,18 @@ window.API_BASE_URL = API_BASE_URL;
 
         const targetTop = targetTopFor(menuItems[index]);
 
-        // PHASE 1) 오른쪽으로 살짝 줄이기
-        // honey.style.transition = `width ${DUR.shrink}ms ease, left ${DUR.shrink}ms ease`;
+        // PHASE 1: 오른쪽으로 흡수 (폭 줄이고 오른쪽으로 이동)
         honey.style.transition = `width 500ms ease, left 600ms ease`;
         honey.style.width = `${HONEY_SHRINK.width}px`;
         honey.style.left = `${HONEY_SHRINK.left}px`;
 
         setTimeout(() => {
-            // PHASE 2) 줄어든 상태로 목표 y 위치로 이동
+            // PHASE 2: 줄어든 상태로 목표 y 위치로 이동
             honey.style.transition = `top ${DUR.move}ms cubic-bezier(0.2, 0.7, 0.2, 1)`;
             honey.style.top = `${targetTop}px`;
 
             setTimeout(() => {
-                // PHASE 3) 원래 크기로 복귀
+                // PHASE 3: 원래 크기로 복귀
                 honey.style.transition = `width 500ms ease, left 600ms ease`;
                 honey.style.width = `${HONEY_ORG.width}px`;
                 honey.style.left = `${HONEY_ORG.left}px`;
@@ -105,32 +100,26 @@ window.API_BASE_URL = API_BASE_URL;
 
     // 이벤트 바인딩
     menuItems.forEach((item, idx) => {
-        item.style.cursor = "pointer";
-        item.addEventListener("click", () => animateTo(idx));
-
-        // Setting에서는 애니메이션 금지
-        const page = item.CDATA_SECTION_NODE.page;
+        const page = item.dataset.page; // ★ 올바른 접근
         if (DISABLED_PAGES.has(page)) {
             item.style.cursor = "default";
             item.setAttribute("aria-disabled", "true");
-
+            // 이동 막고, 기존 alert 등은 외부 핸들러에 맡김
             item.addEventListener("click", (e) => {
-                // 여기서 애니메이션을 막음, 기존 alert 로직은 그대로 실행
                 e.stopPropagation();
             });
-            return;
+        } else {
+            item.style.cursor = "pointer";
+            item.addEventListener("click", () => animateTo(idx));
         }
-
-        // 정상 메뉴는 이동 애니메이션
-        item.addEventListener("click", () => animateTo(idx));
     });
 
-    // (선택) 초기 위치 보정: 현재 DOM 레이아웃 기준으로 한번 맞춰주고 시작
+    // 초기 위치(대시보드)에 맞춤
     honey.style.top = `${targetTopFor(menuItems[currentIndex])}px`;
     honey.style.width = `${HONEY_ORG.width}px`;
     honey.style.left = `${HONEY_ORG.left}px`;
 
-    // (선택) 리사이즈 시 위치 보정이 필요하면 아래 주석 해제
+    // (선택) 리사이즈 시 위치 보정
     // window.addEventListener('resize', () => {
     //   honey.style.top = `${targetTopFor(menuItems[currentIndex])}px`;
     // });

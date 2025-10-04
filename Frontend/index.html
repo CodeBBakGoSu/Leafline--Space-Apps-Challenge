@@ -20,15 +20,13 @@
         <div class="page-wrap">
             <div class="nav-wrap">
                 <div class="nav">
-                    <!-- 메뉴 선택 바 모양 적용 시작 -->
-                    <div class="nav-honey">
-
-                    </div>
-                    <!-- 메뉴 선택 바 모양 적용 끝 -->
                     <div class="logo">
                         <img src="img/logo/logo_small.png" class="logo-img" width="150px" />
                     </div>
                     <div class="menu">
+                        <!-- 메뉴 선택 바 모양 적용 시작 -->
+                        <div class="nav-honey"></div>
+                        <!-- 메뉴 선택 바 모양 적용 끝 -->
                         <div class="menu-item" data-page="dashboard">
                             <div class="menu-img">
                                 <img src="img/icon_common/icon_nav_dashboard_gray.png" width="40px" />
@@ -183,7 +181,7 @@
 
                 function switchContent(page) {
                     // 커뮤니티 페이질 경우, 미들 세션 숨기기
-                    if(page == "community") {
+                    if (page == "community") {
                         document.querySelector(".middle-section").style.display = "none";
                         document.querySelector(".view-label").style.display = "none";
                         document.querySelector(".bottom-section").style.height = "100%";
@@ -225,9 +223,9 @@
                 // 초기 상태 설정
                 contentFrame.style.setProperty("--frame-scale", frameScale.dashboard);
                 setMenuActive("dashboard");
-                
+
                 // 페이지 전체를 80%로 축소
-                document.body.style.zoom = "0.9";
+                document.body.style.zoom = "1.0";
             });
         </script>
     </body>
