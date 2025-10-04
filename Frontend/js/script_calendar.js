@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.sidebar-item.selected').forEach(item => {
             item.classList.remove('selected');
         });
+
     }
 
     // 날짜 칸 클릭 이벤트
