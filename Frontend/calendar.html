@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Calendar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="container">
+        <header class="header">
+            <div class="title">Monthly Journal</div>
+            <div class="head-moveBt">
+                <div class="calendar-header"><!--내비 오른쪽 월 이동 bt-->
+                    <button id="prevMonth">&lt;</button>
+                        <h2 id="currentMonthYear"></h2>
+                    <button id="nextMonth">&gt;</button>
+                </div>
+            </div>
+            <nav class="navigation">
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <section class="calendar-container" id="CalCalendar">
+                
+                <div class="calendar-grid">
+                    <div class="day-name">일</div>
+                    <div class="day-name">월</div>
+                    <div class="day-name">화</div>
+                    <div class="day-name">수</div>
+                    <div class="day-name">목</div>
+                    <div class="day-name">금</div>
+                    <div class="day-name">토</div>
+                </div>
+                <div class="calendar-dates" id="calendarDates">
+                    </div>
+            </section>
+
+            <aside class="sidebar" id="sidebar">
+                <h4>Event List</h4>
+                <div class="sidebar-item" data-task="태스크1">
+                    <div><p>태스크1</p></div>
+                </div>
+                <div class="sidebar-item" data-task="태스크2">
+                    <div><p>태스크2</p></div>
+                </div>
+                <div class="sidebar-item" data-task="태스크3">
+                    <div><p>태스크3</p></div>
+                </div>
+                <div class="sidebar-item" data-task="태스크4">
+                    <div><p>태스크4</p></div>
+                </div>
+                <button class="confirm-btn" id="confirmBtn">확인</button>
+            </aside>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
