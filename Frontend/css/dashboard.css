@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 50vw;
+    width: 60vw;
 }
 
 /* ================================= */
@@ -181,7 +181,7 @@
 }
 
 /* 슬라이더 배경 */
-.slider { 
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -230,7 +230,7 @@ input:focus + .slider {
 /* Blooming Area CheckBox */
 
 #mapCheckBox {
-    position:absolute;
+    position: absolute;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -250,7 +250,6 @@ input:focus + .slider {
     /* margin-bottom: 8px; */
 }
 
-
 /* 실제 checkbox는 안 보이게 설정 */
 .check input[type="checkbox"] {
     position: absolute;
@@ -260,28 +259,28 @@ input:focus + .slider {
 }
 
 .checkbox-text::before {
-    content: '';
+    content: "";
     display: inline-block;
     width: 20px;
     height: 20px;
     margin-right: 8px;
     vertical-align: middle;
 
-    background-image: url('../img/live map/checkbox/checkbox/checkbox_default.png');
+    background-image: url("../img/live map/checkbox/checkbox/checkbox_default.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .checkbox-text.checked::before {
-    content: '';
+    content: "";
     display: inline-block;
     width: 20px;
     height: 20px;
     margin-right: 8px;
     vertical-align: middle;
 
-    background-image: url('../img/live map/checkbox/checkbox/checkbox_active.png');
+    background-image: url("../img/live map/checkbox/checkbox/checkbox_active.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -317,4 +316,26 @@ input:focus + .slider {
     background-color: #f7f5f2;
     margin-right: 20px;
     box-sizing: border-box;
+    padding: 20px;
+}
+
+/* 차트 내용 title */
+.box-title .title-main h1 {
+    font-size: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+/* 일단 추가해보기... */
+.box-chart {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 18px;
+    box-sizing: border-box;
+}
+
+.chart {
+    width: 100% !important;
+    height: 87% !important;
 }

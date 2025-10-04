@@ -18,15 +18,16 @@
         <link rel="stylesheet" href="../css/dashboard.css" />
         <link rel="icon" type="image/png" href="../img/logo/favicon.png" />
         <!-- Bootstrap -->
-         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
-         rel="stylesheet" 
-         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
-         crossorigin="anonymous">
-         <script defer src="../js/bee_flight_range.js"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous" />
+        <script defer src="../js/bee_flight_range.js"></script>
         <script defer src="../js/dashboard.js"></script>
         <script
-        defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ4IcdvhFzj-_9c9nGtKZhoBIN4OXVJPI&language=en&callback=initMap">        </script>
+            defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ4IcdvhFzj-_9c9nGtKZhoBIN4OXVJPI&language=en&callback=initMap"></script>
     </head>
     <body>
         <div class="subpage-wrap">
@@ -36,19 +37,21 @@
                         <div class="map-title">
                             <h1 class="font-sb font-title">Live Map</h1>
                             <div class="map-subtitle">
-                                <img src="../img/live map/livemap_alert.png" width="20px">
-                                    <p class="font-m font-subtitle"><span id=flower>Acacia flowers</span> are within <span id="radius">20km</span> </p>
+                                <img src="../img/live map/livemap_alert.png" width="20px" />
+                                <p class="font-m font-subtitle">
+                                    <span id="flower">Acacia flowers</span> are within <span id="radius">20km</span>
+                                </p>
                             </div>
                         </div>
-                        
+
                         <div class="map-menu">
                             <!-- 벌 비행 범위 토글 추가 -->
                             <div class="bee-range-toggle">
                                 <span class="toggle-label font-m font-subtitle">🐝Bee Range</span>
                                 <label class="switch">
-                                    <input type="checkbox" id="beeRangeToggle" checked>
+                                    <input type="checkbox" id="beeRangeToggle" checked />
                                     <span class="slider"></span>
-                                </label>                                
+                                </label>
                             </div>
                             <div class="toggle">
                                 <div class="toggle-container" data-active="my">
@@ -61,24 +64,28 @@
                     </div>
                     <!-- map-item 끝 -->
                     <div class="map-item">
-                        <div id="map" style="width: 100%; height: 80vh; border-radius: 10px; overflow: hidden;">
+                        <div id="map" style="width: 100%; height: 80vh; border-radius: 10px; overflow: hidden">
                             <!-- Google Maps가 여기에 렌더링됩니다 -->
                         </div>
-                        
+
                         <!-- Bloom Visualization Checkbox -->
                         <div id="mapCheckBox">
                             <div class="checkbox-item">
                                 <label class="check">
-                                    <input type="checkbox" id="check2025" name="check2025" value="2025" >
-                                    <span class="checkbox-text font-r font-grey4" id="checkText2025">2025 Blooming Area</span>
+                                    <input type="checkbox" id="check2025" name="check2025" value="2025" />
+                                    <span class="checkbox-text font-r font-grey4" id="checkText2025"
+                                        >2025 Blooming Area</span
+                                    >
                                 </label>
                             </div>
                             <div class="checkbox-item">
                                 <label class="check">
-                                    <input type="checkbox" id="check2024" name="check2024" value="2024">
-                                    <span class="checkbox-text font-r font-grey4" id="checkText2024">2024 Blooming Area</span>
+                                    <input type="checkbox" id="check2024" name="check2024" value="2024" />
+                                    <span class="checkbox-text font-r font-grey4" id="checkText2024"
+                                        >2024 Blooming Area</span
+                                    >
                                 </label>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                     <!-- map-item 끝 -->
@@ -88,17 +95,28 @@
                 <div class="chart-container">
                     <div class="chart-item">
                         <div class="chart-title">
-                            <h1 class="font-sb font-title">Chart Visualization</h1>
+                            <h1 class="font-sb font-title">Blooming Chart</h1>
                         </div>
                     </div>
-                    <div class="chart-item" id="chartBox"> <!-- 박스 -->
-                        <div class=""
+                    <div class="chart-item" id="chartBox">
+                        <!-- 박스 -->
+                        <div class="box-title">
+                            <div class="title-main">
+                                <h1 class="font-sb font-main">March 21, Wake Up the Bees!</h1>
+                                <p class="font-r font-grey3">Acacia trees are starting to bloom.</p>
+                            </div>
+                        </div>
+                        <div class="box-chart">
+                            <canvas class="chart" width="300px" height="200px">
+                                <!-- 실제로 chart가 들어올 영역 -->
+                            </canvas>
+                        </div>
                     </div>
                 </div>
                 <!-- chart-container 끝 -->
             </div>
         </div>
-  </body>
-        <script src="../js/index.js"></script>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/index.js"></script>
 </html>
