@@ -6,7 +6,7 @@ from app.community import community_service as service
 from app.community import community_schema as schema
 
 router = APIRouter(
-    prefix="/commnunity/posts",
+    prefix="/community/posts",
     tags=["Community Posts"]
 )
 
