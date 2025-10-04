@@ -158,6 +158,7 @@ body {
     position: relative;
     z-index: 1;
     transition: z-index 0.1s;
+    background-color: #3737c0;
 }
 
 /* 사이드바가 활성화되었을 때의 스타일 */
@@ -169,12 +170,22 @@ body {
     margin-bottom: 15px;
 }
 
+/*사이드바 태스크 속성*/
 .sidebar-item {
     border: 1px solid #000;
     margin-bottom: 15px;
     padding: 15px;
     cursor: pointer;
+    background-color: #ccc8c2;
     transition: background-color 0.2s;
+}
+
+/*사이드바 태스크-텍스트박스 속성*/
+#SidebarItem {
+    border: 0px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #f8a62a;
 }
 
 .sidebar-item:hover {
@@ -192,9 +203,10 @@ body {
 .confirm-btn {
     width: 100%;
     padding: 15px;
-    background-color: #333;
-    color: #fff;
-    border: 3px solid #000;
+    background-color: #fff;
+    color: #ccc;
+    border: 0px solid #000;
+    border-radius: 8px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;

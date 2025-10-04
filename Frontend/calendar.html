@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Calendar</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="icon" type="image/png" href="img/logo/favicon.png" />
+    <link rel="stylesheet" href="../Frontend/css/style_calendar.css">
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
@@ -41,16 +44,16 @@
 
             <aside class="sidebar" id="sidebar">
                 <h4>Event List</h4>
-                <div class="sidebar-item" data-task="태스크1">
+                <div class="sidebar-item" id="sidebar-item" data-task="태스크1">
                     <div><p>태스크1</p></div>
                 </div>
-                <div class="sidebar-item" data-task="태스크2">
+                <div class="sidebar-item" id="sidebar-item" data-task="태스크2">
                     <div><p>태스크2</p></div>
                 </div>
-                <div class="sidebar-item" data-task="태스크3">
+                <div class="sidebar-item" id="sidebar-item" data-task="태스크3">
                     <div><p>태스크3</p></div>
                 </div>
-                <div class="sidebar-item" data-task="태스크4">
+                <div class="sidebar-item" id="sidebar-item" data-task="태스크4">
                     <div><p>태스크4</p></div>
                 </div>
                 <button class="confirm-btn" id="confirmBtn">확인</button>
@@ -58,6 +61,6 @@
         </main>
     </div>
 
-    <script src="script.js"></script>
+    <script src="../Frontend/js/script_calendar.js"></script>
 </body>
 </html>
