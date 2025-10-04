@@ -125,7 +125,7 @@ position: fixed;
 }
 
 .date-cell:not(.empty):hover {
-    background-color: #f0f8ff;
+    background-color: #f1f1f1;
 }
 
 .date-cell .date-number {
@@ -144,12 +144,12 @@ position: fixed;
     background-color: #232323;
     color: #ffb246; /*-------------------------------------------------------------------------------------------------------------*/
     border-radius: 15px;
-    padding: 0px 10px;
+    padding: 1px 10px;
     margin-top: 4px;
     text-align: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
 }
 
 
@@ -170,7 +170,7 @@ position: fixed;
 /* 날짜가 선택되었을 때의 날짜칸 스타일 */
 .date-cell.selected {
     background-color: #fff;
-    border: 2px solid #b9e5ff;
+    border: 2px solid #d8d8d8;
     z-index: 10; /* 오버레이 위로 올라오도록 */
 }
 
