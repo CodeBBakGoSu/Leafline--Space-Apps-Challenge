@@ -69,7 +69,7 @@ select {
     padding: 3px 6px;
     border: 1.5px solid #ccc8c2;
     border-radius: 6px;
-    background-image: url("/img/live map/livemap_btn_toggle.png");
+    background-image: url("../img/live map/livemap_btn_toggle.png");
     background-repeat: no-repeat;
     background-position: right 8px center;
     background-size: 18px;
