@@ -77,40 +77,200 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 날짜 칸 클릭 이벤트
     datesElement.addEventListener('click', (event) => {
-        const targetCell = event.target.closest('.date-cell');
-        if (targetCell && !targetCell.classList.contains('empty')) {
-            activateSidebar(targetCell);
+        // AI 예측 일정을 클릭했는지 확인
+        const aiPredictedItem = event.target.closest('.todo-item.ai-predicted');
+        
+        if (aiPredictedItem) {
+            // AI 예측 일정 클릭 → 사용자 확인으로 간주하고 진하게 표시
+            aiPredictedItem.classList.remove('ai-predicted');
+            console.log('✅ AI 예측 일정 확인됨:', aiPredictedItem.textContent);
+            return; // 사이드바는 열지 않음
+        }
+        
+        // 일반 일정이 아닌 빈 공간 클릭 시 사이드바 열기
+        const todoItem = event.target.closest('.todo-item');
+        if (!todoItem) {
+            const targetCell = event.target.closest('.date-cell');
+            if (targetCell && !targetCell.classList.contains('empty')) {
+                activateSidebar(targetCell);
+            }
         }
     });
     
-    // 사이드바 항목 클릭 이벤트
+    // 사이드바 항목 클릭 이벤트 (토글 가능)
     sidebar.addEventListener('click', (event) => {
         if (!sidebar.classList.contains('active')) return;
 
-        if (event.target.classList.contains('sidebar-item')) {
-            event.target.classList.toggle('selected');
+        // 클릭한 요소나 부모 요소에서 sidebar-item 찾기
+        const sidebarItem = event.target.closest('.sidebar-item');
+        
+        if (sidebarItem) {
+            // 선택/선택 해제 토글
+            sidebarItem.classList.toggle('selected');
         }
-    });
-
-    // 확인 버튼 클릭 이벤트
-    confirmBtn.addEventListener('click', () => {
-        if (!selectedDateCell) return;
-
-        const selectedTasks = document.querySelectorAll('.sidebar-item.selected');
-        const todoListContainer = selectedDateCell.querySelector('.todo-list');
-
-        selectedTasks.forEach(task => {
-            const todoItem = document.createElement('div');
-            todoItem.classList.add('todo-item');
-            todoItem.textContent = task.dataset.task;
-            todoListContainer.appendChild(todoItem);
-        });
-
-        deactivateSidebar();
     });
 
     // 오버레이 클릭 시 비활성화
     overlay.addEventListener('click', deactivateSidebar);
+    
+    // 초기 달력 렌더링
+    renderCalendar();
+
+    // 백엔드 API 주소
+    const BACKEND_API_URL = 'http://localhost:8000/api/calendar/schedule'; 
+    
+    // ==========================================================
+    //  새로운 함수: JSON 변환 및 백엔드 전송 (Fetch API 사용)
+    // ==========================================================
+    async function sendScheduleToBackend(selectedCell) {
+        if (!selectedCell) return;
+
+        // 1. 데이터 수집: 날짜 정보
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth() + 1;
+        const day = selectedCell.dataset.day;
+        
+        // 백엔드에서 처리하기 쉬운 'YYYY-MM-DD' 형식으로 날짜 생성
+        const selectedDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        
+        // 2. 데이터 수집: 선택된 할 일 목록
+        // 사이드바에서 'selected' 클래스가 붙은 모든 항목을 찾습니다.
+        const selectedTasks = document.querySelectorAll('.sidebar-item.selected');
+        
+        if (selectedTasks.length === 0) {
+             console.log('선택된 항목이 없습니다.');
+             return;
+        }
+        
+        // 선택된 항목의 data-task 값을 배열로 만듭니다. (JSON에 포함될 데이터)
+        const tasksArray = Array.from(selectedTasks).map(task => task.dataset.task);
+
+        // 3. JavaScript 객체 생성 (JSON으로 변환할 데이터 구조)
+        const scheduleData = {
+            date: selectedDate,    // 예: "2025-10-05"
+            tasks: tasksArray,     // 예: ["The Day I Woke the Bees", "Harvested Honey Day"]
+        };
+
+        // 4. 로딩 상태 표시
+        confirmBtn.disabled = true;
+        const originalBtnText = confirmBtn.textContent;
+        confirmBtn.textContent = 'AI 분석 중...';
+        confirmBtn.style.opacity = '0.6';
+
+        // 4. JSON 변환 및 Fetch 요청
+        try {
+            const response = await fetch(BACKEND_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json' 
+                },
+                body: JSON.stringify(scheduleData) 
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP 오류! 상태 코드: ${response.status}`);
+            }
+
+            const result = await response.json();
+            
+            console.log('✅ 서버 응답 성공:', result);
+            
+            // 5. 백엔드에서 받은 모든 일정을 캘린더에 표시
+            if (result.response && Array.isArray(result.response)) {
+                console.log('📅 받은 일정 개수:', result.response.length);
+                console.log('📋 일정 상세:', result.response);
+                
+                renderSchedulesFromBackend(result.response);
+                
+                const aiCount = result.response.filter(item => item.AI).length;
+                const userCount = result.response.filter(item => !item.AI).length;
+                
+                console.log(`✨ 일정 저장 완료! 사용자: ${userCount}개, AI 예측: ${aiCount}개`);
+                
+                // 사이드바 닫기
+                setTimeout(() => {
+                    deactivateSidebar();
+                }, 300);
+            } else {
+                console.log('⚠️ 응답 형식 오류:', result);
+                deactivateSidebar();
+            }
+            
+        } catch (error) {
+            console.error('❌ 데이터 전송 실패:', error);
+        } finally {
+            // 로딩 상태 해제
+            confirmBtn.disabled = false;
+            confirmBtn.textContent = originalBtnText;
+            confirmBtn.style.opacity = '1';
+        }
+    }
+    // ==========================================================
+    // 💡 새로운 함수: 백엔드에서 받은 일정을 캘린더에 렌더링
+    // ==========================================================
+    function renderSchedulesFromBackend(schedules) {
+        console.log('🔄 renderSchedulesFromBackend 호출됨');
+        console.log('받은 일정:', schedules);
+        
+        // 먼저 모든 기존 일정 제거
+        document.querySelectorAll('.todo-item').forEach(item => item.remove());
+        
+        // 날짜별로 그룹화
+        const schedulesByDate = {};
+        schedules.forEach(schedule => {
+            if (!schedulesByDate[schedule.date]) {
+                schedulesByDate[schedule.date] = [];
+            }
+            schedulesByDate[schedule.date].push(schedule);
+        });
+        
+        console.log('날짜별 그룹:', schedulesByDate);
+        
+        // 각 날짜의 일정을 캘린더에 추가
+        Object.keys(schedulesByDate).forEach(dateStr => {
+            // dateStr 예: "2025-10-05"
+            const [year, month, day] = dateStr.split('-').map(Number);
+            
+            console.log(`처리 중: ${dateStr} (${year}-${month}-${day})`);
+            console.log(`현재 달력: ${currentDate.getFullYear()}-${currentDate.getMonth() + 1}`);
+            
+            // 현재 표시된 달과 같은지 확인
+            if (year === currentDate.getFullYear() && month === currentDate.getMonth() + 1) {
+                // 해당 날짜 셀 찾기
+                const dateCell = document.querySelector(`.date-cell[data-day="${day}"]`);
+                
+                console.log(`날짜 ${day}일 셀 찾기:`, dateCell ? '성공' : '실패');
+                
+                if (dateCell) {
+                    const todoListContainer = dateCell.querySelector('.todo-list');
+                    console.log('할일 컨테이너:', todoListContainer ? '발견' : '없음');
+                    
+                    // 해당 날짜의 모든 일정 추가
+                    schedulesByDate[dateStr].forEach(schedule => {
+                        const todoItem = document.createElement('div');
+                        todoItem.classList.add('todo-item');
+                        todoItem.textContent = schedule.task;
+                        
+                        // AI 예측 일정이면 반투명 스타일 추가
+                        if (schedule.AI) {
+                            todoItem.classList.add('ai-predicted');
+                            console.log(`  ➕ AI 예측: ${schedule.task}`);
+                        } else {
+                            console.log(`  ➕ 사용자: ${schedule.task}`);
+                        }
+                        
+                        todoListContainer.appendChild(todoItem);
+                    });
+                } else {
+                    console.log(`⚠️ 날짜 셀을 찾을 수 없음: ${day}일`);
+                }
+            } else {
+                console.log(`⏭️ 다른 달의 일정 건너뜀: ${dateStr}`);
+            }
+        });
+        
+        console.log('✅ 렌더링 완료');
+    }
     
     // 초기 달력 렌더링
     renderCalendar();
@@ -201,4 +361,24 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // DOM 조작 로직은 sendScheduleToBackend 함수 내부의 성공 시점에 이동됨.
     });
+    
+    // ==========================================================
+    // 💡 페이지 로드 시 기존 일정 불러오기 (선택사항)
+    // ==========================================================
+    async function loadExistingSchedules() {
+        try {
+            const response = await fetch(`${BACKEND_API_URL}?month=${currentDate.getMonth() + 1}&year=${currentDate.getFullYear()}`);
+            if (response.ok) {
+                const result = await response.json();
+                if (result.response) {
+                    renderSchedulesFromBackend(result.response);
+                }
+            }
+        } catch (error) {
+            console.log('기존 일정 불러오기 실패:', error);
+        }
+    }
+    
+    // 초기 로드
+    // loadExistingSchedules(); // 필요시 주석 해제
 });
