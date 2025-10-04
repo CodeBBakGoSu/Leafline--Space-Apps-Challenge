@@ -7,7 +7,7 @@ from app.core.config import settings
 from app.todo.router import router as todo_router
 from app.dashBord.weather_router import router as weather_router
 from app.data.profile_router import router as profile_router
-
+from app.chart.chart_router import router as chart_router  # chart_router 임포트 추가
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -28,9 +28,12 @@ app.add_middleware(
 )
 
 # 라우터 등록
+
 app.include_router(profile_router, prefix="/api")
 app.include_router(todo_router, prefix="/api")
 app.include_router(weather_router, prefix="/api")
+app.include_router(chart_router, prefix="/api")  # chart_router 등록
+
 
 @app.get("/", tags=["Root"])
 async def root():
