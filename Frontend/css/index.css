@@ -74,8 +74,8 @@
     flex: 0 0 25vh;
     min-height: 200px;
     display: flex;
-    gap: 24px;
-    padding: 24px 40px;
+    gap: 14px;
+    padding: 14px 20px;
 }
 
 .todo-section {
@@ -149,7 +149,6 @@
     position: relative;
     background: #ffffff;
     border-radius: 20px;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
     overflow: hidden;
     padding: 0;
 }
@@ -157,7 +156,7 @@
 .scaled-frame {
     --frame-scale: 0.78;
     width: calc(100% / var(--frame-scale));
-    height: calc(100% / var(--frame-scale));
+    height: calc(110% / var(--frame-scale));
     border: none;
     transform-origin: top left;
     transform: scale(var(--frame-scale));
