@@ -4,11 +4,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
-from app.routers import health
-from app.todo.router import get_todos_router
-
-from app.todo.router import get_todos_router
+from app.todo.router import router as todo_router
 from app.dashBord.weather_router import router as weather_router
+from app.data.profile_router import router as profile_router
 
 
 app = FastAPI(
@@ -30,9 +28,9 @@ app.add_middleware(
 )
 
 # 라우터 등록
-app.include_router(health.router, prefix="/api/health", tags=["Health"])
-app.include_router(get_todos_router.router, prefix="/api/todo", tags=["Todo"])
-app.include_router(weather_router, prefix="/api", tags=["Weather"])
+app.include_router(profile_router, prefix="")
+app.include_router(todo_router, prefix="")
+app.include_router(weather_router, prefix="")
 
 
 @app.get("/", tags=["Root"])

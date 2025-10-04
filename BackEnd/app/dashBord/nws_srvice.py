@@ -7,7 +7,7 @@ from datetime import datetime
 import httpx
 
 NWS_BASE = "https://api.weather.gov"
-USER_AGENT = "LeaflineWeather/1.0 (contact@example.com)"  # <-- 프로젝트 정보로 교체
+USER_AGENT = "LeaflineWeather/1.0 (contact@leafline.com)"
 
 
 class WeatherType(str, Enum):

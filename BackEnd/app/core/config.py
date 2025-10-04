@@ -32,6 +32,9 @@ class Settings(BaseSettings):
     # CORS
     CORS_ORIGINS: List[str] = ["http://localhost:3000"]
 
+    # Gemini AI
+    GEMINI_API_KEY: str = "AIzaSyBMmGzEhVIuPPuh_Xv5OT7iGlWcFv6PxcQ"
+
     # Database (Optional)
     # DATABASE_URL: str = "sqlite:///./leafline.db"
 
