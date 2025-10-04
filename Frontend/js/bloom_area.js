@@ -38,17 +38,17 @@ function createBloomAreas(map, bloom_areas) {
 
     const polygon = new google.maps.Polygon({
       paths: polygonCoords,
-      strokeColor: "#4177FF",
-      strokeOpacity: 0.5,
+      strokeColor: "#FF415B",
+      strokeOpacity: 0.4,
       strokeWeight: 2,
-      fillColor: "#4177FF",
+      fillColor: "#FF415B",
       fillOpacity: 0.2,
       map: map,
     });
     bloomAreaObjects.push(polygon);
 
     const flowerIcon = {
-      url: "../img/live map/livemap_flower.png", // 꽃 아이콘 이미지 경로
+      url: "../img/live map/livemap_icon_redMaple.png", // 꽃 아이콘 이미지 경로
       scaledSize: new google.maps.Size(40, 40), // 아이콘 크기
       origin: new google.maps.Point(0, 0), // 아이콘 원점
       anchor: new google.maps.Point(20, 20) // 아이콘 앵커 (아이콘의 바닥 중앙이 위치할 지점)
