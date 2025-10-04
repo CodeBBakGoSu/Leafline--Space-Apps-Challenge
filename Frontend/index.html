@@ -104,9 +104,12 @@
                         </div>
                     </div>
                     <div class="weather-section">
-                        <div class="weather-placeholder">
-                            <strong>Weather space reserved</strong>
-                            <span>날씨 위젯은 추후에 추가할 예정입니다.</span>
+                        <div class="weather-frame-wrapper">
+                            <iframe
+                                class="weather-frame"
+                                src="pages/weather.html"
+                                title="Weather information"
+                                loading="lazy"></iframe>
                         </div>
                     </div>
                 </section>
@@ -167,9 +170,8 @@
                 const menuItems = document.querySelectorAll(".menu-item, .chatbot-menu");
                 const contentFrame = document.getElementById("contentFrame");
                 const frameScale = {
-                    dashboard: 0.78,
-                    calendar: 0.74,
-                    community: 1,
+                    dashboard: 0.8,
+                    calendar: 0.8,
                 };
 
                 function setMenuActive(targetPage) {
@@ -223,6 +225,9 @@
                 // 초기 상태 설정
                 contentFrame.style.setProperty("--frame-scale", frameScale.dashboard);
                 setMenuActive("dashboard");
+                
+                // 페이지 전체를 80%로 축소
+                document.body.style.zoom = "0.9";
             });
         </script>
     </body>
