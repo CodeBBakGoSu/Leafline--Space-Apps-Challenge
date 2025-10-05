@@ -188,18 +188,17 @@ body {
 
 /* AI 예측 일정 스타일 - 반투명 */
 .todo-item.ai-predicted {
-    opacity: 0.4;
+    opacity: 1;
     font-style: italic;
-    background-color: transparent;
-    color: rgba(255, 178, 70, 0.7);
-    border: 1px dashed rgba(255, 178, 70, 0.7);
+    background-color: rgba(255, 236, 179, 0.3); /* 살짝 채움 */
+    color: rgba(140, 137, 133, 0.5);            /* 텍스트 반투명 */
+    border: 1px dashed rgba(255, 178, 70, 0.5);
     font-size: 12px;
-    color: #ffffff;
     border-radius: 15px;
     padding: 8px 10px;
     margin-top: 4px;
     text-align: left;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 /* AI 예측 일정 호버 시 진하게 */
