@@ -586,7 +586,6 @@ function buildChart(bloomData, honeyData) {
     buildChart(bloomData, honeyData);
 })();
 
-
 /* ================================
    Event 토글 시 지도 대신 이미지 표시
 ================================ */
@@ -598,7 +597,6 @@ $(function () {
 
     // 원래 텍스트 저장
     const originalText = $subtitle.text();
-    const eventImage = "#"; // 원하는 이미지 경로로 변경
 
     $(".toggle-option").on("click", function () {
         const isEvent = $(this).hasClass("event");
@@ -622,10 +620,6 @@ $(function () {
 
             // 원래 p태그 내용 복원
             $subtitle.text(originalText);
-        }
-    });
-});
-            console.log("🗺️ My 모드: Google Maps로 복귀");
         }
     });
 });
