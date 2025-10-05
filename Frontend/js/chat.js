@@ -210,7 +210,7 @@ window.addEventListener('load', function() {
         
         if (firstOpen) {
             setTimeout(() => {
-                addMessage('안녕하세요! Bloom AI입니다. 무엇을 도와드릴까요?', 'ai');
+                addMessage("Hello! I'm Bloom AI. How can I help you?", 'ai');
             }, 500);
             firstOpen = false;
         }

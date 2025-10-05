@@ -82,7 +82,7 @@
     display: flex;
     justify-content: center;
     /* gap: 14px; */
-    gap: 14px;
+    gap: 18px;
     padding: 14px 20px;
     position: relative;
     z-index: 1; /* AI 옵션 리스트보다 낮게 */
