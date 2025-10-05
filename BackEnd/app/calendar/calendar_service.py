@@ -88,6 +88,7 @@ class CalendarService:
 4. 최대 5개의 미래 일정 추천
 5. 각 일정은 구체적이고 실행 가능해야 함
 6. **날짜는 반드시 {base_date} ~ {end_date.strftime("%Y-%m-%d")} 범위 내여야 함**
+7. 반드시 영어로 대답할것
 
 응답 형식 (JSON):
 [
