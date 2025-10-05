@@ -78,6 +78,7 @@ class CalendarService:
 사용자가 추가한 일정:
 - 날짜: {base_date}
 - 일정: {', '.join(tasks)}
+7. 반드시 영어로 대답할것
 
 위 일정을 분석하여 **{base_date} 이후 30일 내**에 필요한 관련 일정을 예측해주세요.
 
@@ -102,7 +103,9 @@ class CalendarService:
   {{"date": "{(base_dt + timedelta(days=7)).strftime("%Y-%m-%d")}", "task": "먹이 추가"}}
 ]
 
+또한 반드시 영어로 대답할것
 **주의: 날짜는 {base_date} 이후의 날짜만 사용하세요. JSON만 출력하고 다른 설명은 하지 마세요.**"""
+
 
         try:
             response = self.model.generate_content(prompt)

@@ -66,6 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
         selectedDateCell = cell;
         selectedDateCell.classList.add('selected');
         
+        // 캘린더와 헤더에서 expanded 클래스 제거 (줄어들게)
+        const calendarContainer = document.querySelector('.calendar-container');
+        const header = document.querySelector('.header');
+        const monthButton = document.querySelector('.calendar-header img');
+        
+        if (calendarContainer) calendarContainer.classList.remove('expanded');
+        if (header) header.classList.remove('expanded');
+        if (monthButton) monthButton.classList.remove('expanded'); // 월 버튼 원래 위치로
+        if (overlay) overlay.classList.remove('expanded'); // overlay 원래 크기로
+        
         sidebar.classList.add('active');
         overlay.style.display = 'block';
     }
@@ -76,6 +86,17 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedDateCell.classList.remove('selected');
             selectedDateCell = null;
         }
+        
+        // 캘린더와 헤더에 expanded 클래스 추가 (늘어나게)
+        const calendarContainer = document.querySelector('.calendar-container');
+        const header = document.querySelector('.header');
+        const monthButton = document.querySelector('.calendar-header img');
+        
+        if (calendarContainer) calendarContainer.classList.add('expanded');
+        if (header) header.classList.add('expanded');
+        if (monthButton) monthButton.classList.add('expanded'); // 월 버튼 오른쪽으로 이동
+        if (overlay) overlay.classList.add('expanded'); // overlay 확장
+        
         sidebar.classList.remove('active');
         overlay.style.display = 'none';
 
@@ -126,6 +147,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // 초기 달력 렌더링
     console.log('🎯 초기 캘린더 렌더링 시작');
     renderCalendar();
+    
+    // 초기 상태에서 캘린더와 헤더 확장
+    const calendarContainer = document.querySelector('.calendar-container');
+    const header = document.querySelector('.header');
+    const monthButton = document.querySelector('.calendar-header img');
+    
+    if (calendarContainer) calendarContainer.classList.add('expanded');
+    if (header) header.classList.add('expanded');
+    if (monthButton) monthButton.classList.add('expanded'); // 초기 상태에서 월 버튼 오른쪽으로
+    if (overlay) overlay.classList.add('expanded'); // 초기 상태에서 overlay 확장
     
     // 꽃 이벤트 추가 함수
     function addFlowerEvents() {
