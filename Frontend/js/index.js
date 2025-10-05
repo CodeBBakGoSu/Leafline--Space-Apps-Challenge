@@ -3,7 +3,7 @@
  */
 
 // 백엔드 API 기본 URL
-const API_BASE_URL = ""; // Vercel 프록시 사용
+const API_BASE_URL = "http://http://localhost:3000"; // Vercel 프록시 사용
 
 /**
  * API 요청 헬퍼 함수

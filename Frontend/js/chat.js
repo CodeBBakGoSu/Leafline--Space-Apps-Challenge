@@ -98,7 +98,7 @@ async function showAIResponse(userMessage) {
     
     try {
         // 백엔드 API 호출
-        const response = await fetch('/api/chat/message', { // Vercel 프록시 사용
+        const response = await fetch('http://localhost:3000/api/chat/message', { // Vercel 프록시 사용
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

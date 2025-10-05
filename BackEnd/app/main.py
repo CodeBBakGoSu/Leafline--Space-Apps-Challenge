@@ -23,12 +23,22 @@ app = FastAPI(
 )
 #####
 # CORS 설정
+origins = [
+    "http://127.0.0.1:5502",
+    "http://localhost:3000",
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    # Vite/CRA 개발 포트 사용 시
+    "http://127.0.0.1:3000",
+    "http://localhost:5173",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=origins,          # 배포 시에는 정확한 도메인만 남기세요
+    allow_credentials=True,         # 쿠키/인증 필요 없다면 False로
+    allow_methods=["*"],            # 필요한 메서드만 명시해도 됨
+    allow_headers=["*"],            # Authorization, Content-Type 등
 )
 
 # 라우터 등록

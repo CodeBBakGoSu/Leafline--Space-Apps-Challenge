@@ -1,7 +1,7 @@
 /* ===== weather.js : 7일 날씨 블럭 렌더 (fetch + 아이콘 매핑) ===== */
 
 (function () {
-    const API = "/api/dashboard/weather/7day";
+    const API = "http://localhost:3000/api/dashboard/weather/7day";
 
     // 안전하게 주입할 컨테이너(두 번째 weather-item)
     const mount = document.querySelector(".weather-container .weather-item:nth-of-type(2)");
