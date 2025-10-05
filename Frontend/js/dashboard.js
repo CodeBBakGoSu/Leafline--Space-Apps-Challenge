@@ -571,9 +571,10 @@ function buildChart(bloomData, honeyData) {
 
     let payload;
     try {
-        const r = await fetch(API_URL, { headers: { Accept: "application/json" } });
-        if (!r.ok) throw new Error(`bad status ${r.status}`);
-        payload = await r.json();
+        console.log("API URL : ", API_URL);
+        // const r = await fetch(API_URL, { headers: { Accept: "application/json" } });
+        // if (!r.ok) throw new Error(`bad status ${r.status}`);
+        // payload = await r.json();
     } catch (e) {
         console.warn("API failed, using FALLBACK:", e);
         payload = FALLBACK;
