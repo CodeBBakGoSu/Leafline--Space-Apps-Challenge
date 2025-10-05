@@ -1,0 +1,266 @@
+[
+    {
+        "date":"2019-07-28",
+        "pred_days":208.2665039023,
+        "true_days_until_bloom":203,
+        "abs_error":5.2665039023,
+        "pred_bloom_date":"2020-02-21 06:23:45.937155134",
+        "true_bloom_date":"2020-02-16"
+    },
+    {
+        "date":"2019-08-13",
+        "pred_days":174.7740541225,
+        "true_days_until_bloom":187,
+        "abs_error":12.2259458775,
+        "pred_bloom_date":"2020-02-03 18:34:38.276186877",
+        "true_bloom_date":"2020-02-16"
+    },
+    {
+        "date":"2019-08-29",
+        "pred_days":161.8578194228,
+        "true_days_until_bloom":171,
+        "abs_error":9.1421805772,
+        "pred_bloom_date":"2020-02-06 20:35:15.598128027",
+        "true_bloom_date":"2020-02-16"
+    },
+    {
+        "date":"2019-09-14",
+        "pred_days":149.4815298757,
+        "true_days_until_bloom":155,
+        "abs_error":5.5184701243,
+        "pred_bloom_date":"2020-02-10 11:33:24.181259019",
+        "true_bloom_date":"2020-02-16"
+    },
+    {
+        "date":"2019-09-30",
+        "pred_days":142.8987123557,
+        "true_days_until_bloom":139,
+        "abs_error":3.8987123557,
+        "pred_bloom_date":"2020-02-19 21:34:08.747535763",
+        "true_bloom_date":"2020-02-16"
+    },
+    {
+        "date":"2019-10-16",
+        "pred_days":112.0577205708,
+        "true_days_until_bloom":123,
+        "abs_error":10.9422794292,
+        "pred_bloom_date":"2020-02-05 01:23:07.057315564",
+        "true_bloom_date":"2020-02-16"
+    },
+    {
+        "date":"2019-11-01",
+        "pred_days":148.1491049969,
+        "true_days_until_bloom":107,
+        "abs_error":41.1491049969,
+        "pred_bloom_date":"2020-03-28 03:34:42.671734112",
+        "true_bloom_date":"2020-02-16"
+    },
+    {
+        "date":"2019-11-17",
+        "pred_days":187.2261236401,
+        "true_days_until_bloom":91,
+        "abs_error":96.2261236401,
+        "pred_bloom_date":"2020-05-22 05:25:37.082503758",
+        "true_bloom_date":"2020-02-16"
+    },
+    {
+        "date":"2019-12-03",
+        "pred_days":64.3710303208,
+        "true_days_until_bloom":75,
+        "abs_error":10.6289696792,
+        "pred_bloom_date":"2020-02-05 08:54:17.019719392",
+        "true_bloom_date":"2020-02-16"
+    },
+    {
+        "date":"2019-12-19",
+        "pred_days":31.9905329252,
+        "true_days_until_bloom":59,
+        "abs_error":27.0094670748,
+        "pred_bloom_date":"2020-01-19 23:46:22.044741047",
+        "true_bloom_date":"2020-02-16"
+    },
+    {
+        "date":"2020-01-01",
+        "pred_days":107.3929326108,
+        "true_days_until_bloom":46,
+        "abs_error":61.3929326108,
+        "pred_bloom_date":"2020-04-17 09:25:49.377573439",
+        "true_bloom_date":"2020-02-16"
+    },
+    {
+        "date":"2020-01-17",
+        "pred_days":88.0381787362,
+        "true_days_until_bloom":30,
+        "abs_error":58.0381787362,
+        "pred_bloom_date":"2020-04-14 00:54:58.642804215",
+        "true_bloom_date":"2020-02-16"
+    },
+    {
+        "date":"2020-02-02",
+        "pred_days":110.1001454074,
+        "true_days_until_bloom":14,
+        "abs_error":96.1001454074,
+        "pred_bloom_date":"2020-05-22 02:24:12.563203351",
+        "true_bloom_date":"2020-02-16"
+    },
+    {
+        "date":"2020-02-18",
+        "pred_days":135.537032521,
+        "true_days_until_bloom":372,
+        "abs_error":236.462967479,
+        "pred_bloom_date":"2020-07-02 12:53:19.609811246",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-03-05",
+        "pred_days":177.7374092758,
+        "true_days_until_bloom":356,
+        "abs_error":178.2625907242,
+        "pred_bloom_date":"2020-08-29 17:41:52.161426009",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-03-21",
+        "pred_days":223.9519592873,
+        "true_days_until_bloom":340,
+        "abs_error":116.0480407127,
+        "pred_bloom_date":"2020-10-30 22:50:49.282425441",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-04-06",
+        "pred_days":221.1625350969,
+        "true_days_until_bloom":324,
+        "abs_error":102.8374649031,
+        "pred_bloom_date":"2020-11-13 03:54:03.032369231",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-04-22",
+        "pred_days":236.070762237,
+        "true_days_until_bloom":308,
+        "abs_error":71.929237763,
+        "pred_bloom_date":"2020-12-14 01:41:53.857281094",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-05-08",
+        "pred_days":229.3537826307,
+        "true_days_until_bloom":292,
+        "abs_error":62.6462173693,
+        "pred_bloom_date":"2020-12-23 08:29:26.819292773",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-05-24",
+        "pred_days":153.9339895659,
+        "true_days_until_bloom":276,
+        "abs_error":122.0660104341,
+        "pred_bloom_date":"2020-10-24 22:24:56.698495323",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-06-09",
+        "pred_days":242.0167932339,
+        "true_days_until_bloom":260,
+        "abs_error":17.9832067661,
+        "pred_bloom_date":"2021-02-06 00:24:10.935410567",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-06-25",
+        "pred_days":218.8265274848,
+        "true_days_until_bloom":244,
+        "abs_error":25.1734725152,
+        "pred_bloom_date":"2021-01-29 19:50:11.974686305",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-07-11",
+        "pred_days":223.1436600876,
+        "true_days_until_bloom":228,
+        "abs_error":4.8563399124,
+        "pred_bloom_date":"2021-02-19 03:26:52.231569287",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-07-27",
+        "pred_days":215.9497290924,
+        "true_days_until_bloom":212,
+        "abs_error":3.9497290924,
+        "pred_bloom_date":"2021-02-27 22:47:36.593579160",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-08-12",
+        "pred_days":165.5790849369,
+        "true_days_until_bloom":196,
+        "abs_error":30.4209150631,
+        "pred_bloom_date":"2021-01-24 13:53:52.938544211",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-08-28",
+        "pred_days":127.3816799207,
+        "true_days_until_bloom":180,
+        "abs_error":52.6183200793,
+        "pred_bloom_date":"2021-01-02 09:09:37.145150199",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-09-13",
+        "pred_days":160.5770164806,
+        "true_days_until_bloom":164,
+        "abs_error":3.4229835194,
+        "pred_bloom_date":"2021-02-20 13:50:54.223925092",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-09-29",
+        "pred_days":151.0500865026,
+        "true_days_until_bloom":148,
+        "abs_error":3.0500865026,
+        "pred_bloom_date":"2021-02-27 01:12:07.473822134",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-10-15",
+        "pred_days":114.396456267,
+        "true_days_until_bloom":132,
+        "abs_error":17.603543733,
+        "pred_bloom_date":"2021-02-06 09:30:53.821467901",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-10-31",
+        "pred_days":113.8039427289,
+        "true_days_until_bloom":116,
+        "abs_error":2.1960572711,
+        "pred_bloom_date":"2021-02-21 19:17:40.651775499",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-11-16",
+        "pred_days":99.2187641651,
+        "true_days_until_bloom":100,
+        "abs_error":0.7812358349,
+        "pred_bloom_date":"2021-02-23 05:15:01.223865538",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-12-02",
+        "pred_days":70.2801803894,
+        "true_days_until_bloom":84,
+        "abs_error":13.7198196106,
+        "pred_bloom_date":"2021-02-10 06:43:27.585640462",
+        "true_bloom_date":"2021-02-24"
+    },
+    {
+        "date":"2020-12-18",
+        "pred_days":57.4850742842,
+        "true_days_until_bloom":68,
+        "abs_error":10.5149257158,
+        "pred_bloom_date":"2021-02-13 11:38:30.418157826",
+        "true_bloom_date":"2021-02-24"
+    }
+]
