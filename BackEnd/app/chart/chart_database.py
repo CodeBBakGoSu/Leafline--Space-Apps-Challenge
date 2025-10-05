@@ -17,19 +17,19 @@ bloom_data = {
             {"month": 11, "data": 0},
             {"month": 12, "data": 0}
         ],
-        "almond": [
+        "almond": [                    #실제 개화량 데이터임.
             {"month": 1, "data": 0},
-            {"month": 2, "data": 10},
-            {"month": 3, "data": 150},
-            {"month": 4, "data": 380},  # 최고조
-            {"month": 5, "data": 210},
-            {"month": 6, "data": 90},
-            {"month": 7, "data": 40},
-            {"month": 8, "data": 15},
-            {"month": 9, "data": 5},
-            {"month": 10, "data": 0},
-            {"month": 11, "data": 0},
-            {"month": 12, "data": 0}
+            {"month": 2, "data": 0},
+            {"month": 3, "data": 0},
+            {"month": 4, "data": 0},
+            {"month": 5, "data": 4},
+            {"month": 6, "data": 5},
+            {"month": 7, "data": 4},
+            {"month": 8, "data": 7},
+            {"month": 9, "data": 9},
+            {"month": 10, "data": 16}, # 10월, 11월에 예측일이 집중되어 개화량 높음
+            {"month": 11, "data": 15},
+            {"month": 12, "data": 6}
         ],
         "honey": [
             {"month": 1, "amount": 20},
@@ -44,6 +44,22 @@ bloom_data = {
             {"month": 10, "amount": 5},
             {"month": 11, "amount": 2},
             {"month": 12, "amount": 0}
+        ]
+    },
+    2026: {
+        "Maple": [
+            {"month": 1, "data": 11},
+            {"month": 2, "data": 0},
+            {"month": 3, "data": 0},
+            {"month": 4, "data": 0},
+            {"month": 5, "data": 0},
+            {"month": 6, "data": 0},
+            {"month": 7, "data": 0},
+            {"month": 8, "data": 0},
+            {"month": 9, "data": 0},
+            {"month": 10, "data": 0},
+            {"month": 11, "data": 0},
+            {"month": 12, "data": 0}
         ]
     }
 }
