@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 4. 로딩 상태 표시
         confirmBtn.disabled = true;
         const originalBtnText = confirmBtn.textContent;
-        confirmBtn.textContent = 'AI 분석 중...';
+        confirmBtn.textContent = 'AI analyzing...'; // 로딩 텍스트
         confirmBtn.style.opacity = '0.6';
 
         // 4. JSON 변환 및 Fetch 요청
