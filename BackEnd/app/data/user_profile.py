@@ -11,8 +11,8 @@ USER_PROFILE: Dict[str, Any] = {
         "city": "Orlando",
         "state": "Florida",
         "country": "USA",
-        "latitude": 28.5383,
-        "longitude": -81.3792,
+        "latitude": 28.5649675,
+        "longitude": -81.1614906,
     },
     "beekeeping_info": {
         "experience_years": 5,
