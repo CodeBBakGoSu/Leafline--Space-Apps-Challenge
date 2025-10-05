@@ -1,8 +1,45 @@
-# Leafline BackEnd
+# 🌿 Leafline
+### AI-Powered Beekeeping Assistant for Maximizing Honey Harvests
+
+**Leafline**은 현대 양봉업자들이 마주하는 도전 과제들을 해결하기 위해 탄생한 AI 기반 서비스입니다. 저희는 개화 시기 예측의 불확실성과 전 세계적인 꿀벌 군집 붕괴 현상에 주목하여, 데이터와 기술을 통해 양봉업의 지속 가능성을 높이고자 합니다.
+
+## 🌱 저희의 이야기 (Our Story)
+
+저희 LEAFLINE 팀은 NASA의 "BloomWatch: 지구 개화 현상 관측 애플리케이션" 프로젝트를 탐구하며 자연의 순환과 꿀벌의 중요성에 깊은 관심을 갖게 되었습니다. 최근 급격한 기후 변화로 인한 **개화 시기 예측 실패**와 **집단 꿀벌 실종 사태(Colony Collapse Disorder)**가 양봉 농가에 큰 위협이 되고 있다는 사실을 알게 되었습니다.
+
+이러한 문제에 공감하며, 저희는 양봉업자들을 위한 실질적인 해결책을 제공하고자 Leafline 서비스를 개발하게 되었습니다. Leafline은 **AI 기반 개화 시기 예측**을 통해 꿀벌의 활동을 최적화하고, 궁극적으로 **꿀 수확량을 극대화**할 수 있도록 돕는 든든한 파트너입니다.
+
+## ✨ 주요 기능 (Key Features)
+
+- 🌸 **AI 기반 개화 예측 (Bloom Prediction)**: 위성 데이터와 기상 정보를 분석하여 주요 밀원 식물의 개화 시기를 예측하고, 최적의 벌통 배치 시기와 장소를 제안합니다.
+- 🍯 **꿀 수확량 예측 (Honey Yield Forecast)**: 개화 예측 데이터와 벌통의 상태를 종합하여 예상 꿀 수확량을 예측함으로써 농가의 수익 계획 수립을 돕습니다.
+- ✅ **AI 할 일 추천 (Smart To-Do Planner)**: 각 벌통의 상태, 날씨, 개화 예측 정보를 바탕으로 **오늘의 할 일**과 **월간 관리 계획**을 AI가 자동으로 추천하여 체계적인 양봉 관리를 지원합니다.
+- 📝 **사용자 맞춤 관리 (Customizable Tasks)**: AI 추천 외에도 사용자 스스로 필요한 작업을 추가하고 관리하며 각 벌통의 이력을 추적할 수 있습니다.
+- 💬 **커뮤니티 (Community)**: 다른 양봉업자들과 지식과 경험을 나누고 소통할 수 있는 공간입니다. 함께 배우고 성장하며 좋은 영향을 주고받기를 바랍니다.
+
+## 🛠️ 기술 스택 (Tech Stack)
+
+- **Backend**: Python (FastAPI)
+- **Frontend**: HTML, CSS, JavaScript (Vanilla)
+- **Modeling**: Scikit-learn, TensorFlow
+- **Deployment**: AWS EC2 (Backend), Vercel (Frontend)
+
+## 🏆 팀 소개 (Meet the Team)
+저희는 NASA Space Apps Challenge에서 만나 이 프로젝트를 시작했습니다.
+
+| Name | GitHub | Role |
+| :--- | :--- | :--- |
+| **홍기현** | [CodeBBackGoSu](https://github.com/CodeBBackGoSu) | Backend, Product Owner |
+| **조은서** | [theeunseojo](https://github.com/theeunseojo) | Backend |
+| **오유성** | [Emma10003](https://github.com/Emma10003) | Frontend |
+| **은영** | [euny802](https://github.com/euny802) | Frontend |
+| **윤세휘** | [thw-hwistle](https://github.com/thw-hwistle) | Data Analyst, Modeling |
+
+---
+
+## 🚀 시작하기 (Backend)
 
 FastAPI 기반의 백엔드 서버입니다.
-
-## 🚀 시작하기
 
 ### 필수 요구사항
 
@@ -17,63 +54,31 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Windows
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
-
-# Homebrew (macOS)
-brew install uv
-
-# pip를 통한 설치
-pip install uv
 ```
 
 ### UV로 가상환경 세팅하기
 
-#### 1. 프로젝트 초기화
+#### 1. 프로젝트 초기화 및 의존성 설치
 
 ```bash
+# 프로젝트 디렉토리로 이동
 cd BackEnd
 
-# uv를 사용하여 프로젝트 초기화
-uv init
-```
-
-#### 2. 가상환경 생성 및 활성화
-
-```bash
-# 가상환경은 자동으로 .venv 디렉토리에 생성됩니다
-# uv가 자동으로 가상환경을 관리하므로 별도 활성화가 필요 없습니다
-
-# 만약 수동으로 활성화하고 싶다면:
-# macOS/Linux
-source .venv/bin/activate
-
-# Windows
-.venv\Scripts\activate
-```
-
-#### 3. 의존성 설치
-
-```bash
-# pyproject.toml에 정의된 의존성 설치
+# uv를 사용하여 가상환경 생성 및 의존성 설치
 uv sync
-
-# 또는 개별 패키지 설치
-uv pip install fastapi uvicorn[standard] python-dotenv pydantic-settings
 ```
 
-#### 4. 개발 서버 실행
+#### 2. 개발 서버 실행
 
 ```bash
 # uv를 사용하여 직접 실행
 uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-
-# 또는 가상환경 활성화 후
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 서버가 시작되면 다음 주소로 접속할 수 있습니다:
-- API: http://localhost:8000
-- API 문서 (Swagger): http://localhost:8000/docs
-- API 문서 (ReDoc): http://localhost:8000/redoc
+- **API**: `http://localhost:8000`
+- **API 문서 (Swagger)**: `http://localhost:8000/docs`
+- **API 문서 (ReDoc)**: `http://localhost:8000/redoc`
 
 ## 📁 프로젝트 구조
 
@@ -85,169 +90,41 @@ BackEnd/
 │   ├── main.py              # FastAPI 애플리케이션 진입점
 │   │
 │   ├── routers/             # API 라우터 (도메인별)
-│   │   ├── __init__.py
-│   │   ├── health.py        # 헬스 체크
-│   │   ├── users.py         # 사용자 관련 API (예시)
-│   │   └── posts.py         # 게시글 관련 API (예시)
-│   │
 │   ├── services/            # 비즈니스 로직 (도메인별)
-│   │   ├── __init__.py
-│   │   ├── health_service.py
-│   │   ├── user_service.py  # 사용자 비즈니스 로직 (예시)
-│   │   └── post_service.py  # 게시글 비즈니스 로직 (예시)
-│   │
-│   └── core/                # 핵심 설정
-│       ├── __init__.py
-│       ├── config.py        # 환경 설정
-│       └── security.py      # 보안 관련 (JWT 등)
+│   └── core/                # 핵심 설정 (환경변수, 보안)
 │
 ├── tests/                   # 테스트 코드
-│   ├── __init__.py
-│   ├── conftest.py
-│   └── test_api/
-│       └── test_items.py
-│
 ├── .env.example             # 환경 변수 예시
 ├── pyproject.toml           # 프로젝트 의존성 및 설정
 └── README.md
 ```
 
-### 📂 프로젝트 구조 설명
+## 🛠️ UV 패키지 관리
 
-이 프로젝트는 **간단하고 명확한 레이어 구조**를 따릅니다:
+UV는 `npm`이나 `yarn`처럼 **자동으로 `pyproject.toml`에 의존성을 추가/제거**합니다.
 
-#### 🔹 **routers/** - API 엔드포인트
-- HTTP 요청/응답 처리
-- 라우팅 및 입력 검증
-- 서비스 계층 호출
-
-#### 🔹 **services/** - 비즈니스 로직
-- 핵심 비즈니스 로직 구현
-- 데이터 처리 및 변환
-- 외부 API 호출
-- 복잡한 계산 및 검증
-
-#### 🔹 **core/** - 설정 및 보안
-- 환경 설정 관리
-- JWT, 인증 등 보안 유틸리티
-
-### 💡 도메인 추가 예시
-
-**예시: Users 도메인**
-```
-1. app/routers/users.py       → API 엔드포인트 정의
-2. app/services/user_service.py → 비즈니스 로직 구현
-3. app/main.py                → 라우터 등록
-```
-
-**코드 흐름:**
-```
-Client → Router → Service → Response
-         (API)    (로직)
-```
-
-## 📦 주요 의존성
-
-- **FastAPI**: 현대적이고 빠른 웹 프레임워크
-- **Uvicorn**: ASGI 서버
-- **Pydantic**: 데이터 검증 및 설정 관리
-- **SQLAlchemy**: ORM (Optional)
-- **Alembic**: 데이터베이스 마이그레이션 (Optional)
-
-## 🛠️ UV 패키지 관리 (자동으로 pyproject.toml 업데이트)
-
-UV는 **자동으로 `pyproject.toml`에 의존성을 추가/제거**합니다!
-
-### 📦 패키지 추가 (프로덕션 의존성)
+### 패키지 추가
 
 ```bash
-# 일반 패키지 추가 - pyproject.toml의 dependencies에 자동 추가
-uv add sqlalchemy
-uv add alembic
-uv add python-jose[cryptography]
-uv add passlib[bcrypt]
+# 프로덕션 의존성 추가
+uv add fastapi
 
-# 여러 패키지 한 번에 추가
-uv add sqlalchemy alembic python-jose passlib
+# 개발용 의존성 추가
+uv add --dev pytest
 ```
 
-**실행 결과:**
-- ✅ `pyproject.toml`의 `dependencies` 배열에 자동 추가
-- ✅ `uv.lock` 파일 자동 업데이트
-- ✅ 가상환경에 즉시 설치
-
-### 🔧 개발 의존성 추가
+### 패키지 제거
 
 ```bash
-# 개발용 패키지 - pyproject.toml의 dev dependencies에 추가
-uv add --dev pytest-asyncio
-uv add --dev black ruff
-uv add --dev ipython
-
-# 또는 --group dev 옵션 사용
-uv add --group dev pytest-asyncio
+uv remove fastapi
 ```
 
-**실행 결과:**
-- ✅ `pyproject.toml`의 `[project.optional-dependencies] dev` 배열에 추가
+### 의존성 동기화
 
-### 🗑️ 패키지 제거
-
+`pyproject.toml` 파일 기준으로 가상환경을 최신 상태로 맞춥니다.
 ```bash
-# 패키지 제거 - pyproject.toml에서도 자동 삭제
-uv remove sqlalchemy
-
-# 개발 의존성 제거
-uv remove --dev pytest-asyncio
-```
-
-### 🔄 기타 유용한 명령어
-
-```bash
-# 의존성 동기화 (pyproject.toml 기준으로 재설치)
 uv sync
-
-# 개발 의존성 제외하고 동기화
-uv sync --no-dev
-
-# Python 스크립트 실행
-uv run python script.py
-
-# 가상환경에서 명령 실행
-uv run <command>
-
-# 특정 버전 지정하여 추가
-uv add "fastapi>=0.100.0,<1.0.0"
-uv add "sqlalchemy==2.0.23"
-
-# 의존성 업데이트
-uv lock --upgrade          # 모든 패키지 최신 버전으로
-uv lock --upgrade fastapi  # 특정 패키지만 업데이트
-
-# 설치된 패키지 목록 확인
-uv pip list
-
-# 패키지 정보 확인
-uv pip show fastapi
 ```
-
-### 💡 실제 사용 예시
-
-```bash
-# 데이터베이스 관련 패키지 추가
-uv add sqlalchemy alembic psycopg2-binary
-
-# 인증 관련 패키지 추가
-uv add "python-jose[cryptography]" "passlib[bcrypt]"
-
-# 개발 도구 추가
-uv add --dev pytest pytest-asyncio pytest-cov httpx
-
-# 서버 실행
-uv run uvicorn app.main:app --reload
-```
-
-**중요:** UV는 `npm`이나 `yarn`처럼 자동으로 `pyproject.toml`을 관리하므로, 수동으로 파일을 편집할 필요가 없습니다!
 
 ## 🔧 개발 가이드
 
@@ -259,35 +136,18 @@ uv run uvicorn app.main:app --reload
 cp .env.example .env
 ```
 
-### 코드 스타일
+### 코드 스타일 및 테스트
 
 ```bash
-# Black (포맷터)
+# 코드 포맷팅 (Black)
 uv run black app
 
-# Ruff (린터)
+# 린트 검사 (Ruff)
 uv run ruff check app
 
-# MyPy (타입 체크)
-uv run mypy app
-```
-
-### 테스트 실행
-
-```bash
-# pytest로 테스트 실행
+# 테스트 실행 (Pytest)
 uv run pytest
-
-# 커버리지와 함께 테스트
-uv run pytest --cov=app tests/
 ```
-
-## 📝 API 문서
-
-FastAPI는 자동으로 API 문서를 생성합니다:
-- Swagger UI: http://localhost:8000/docs
-- ReDoc: http://localhost:8000/redoc
-- OpenAPI Schema: http://localhost:8000/openapi.json
 
 ## 🤝 기여하기
 
@@ -295,4 +155,3 @@ FastAPI는 자동으로 API 문서를 생성합니다:
 2. 변경사항 커밋 (`git commit -m 'Add some amazing feature'`)
 3. 브랜치에 푸시 (`git push origin feature/amazing-feature`)
 4. Pull Request 생성
-
