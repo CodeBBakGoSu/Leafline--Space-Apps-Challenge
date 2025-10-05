@@ -7,14 +7,6 @@ $(function () {
             $("#checkText2025").addClass("checked");
         }
     });
-    // Blooming Area 체크박스 - 2025
-    $("#check2024").click(() => {
-        if ($("#checkText2024").hasClass("checked")) {
-            $("#checkText2024").removeClass("checked");
-        } else {
-            $("#checkText2024").addClass("checked");
-        }
-    });
 });
 
 /**
@@ -74,6 +66,8 @@ window.initMap = async function () {
             zoomControl: true, // 줌 컨트롤 표시
         });
 
+        window.map = map;
+
         // 2. 사용자 위치 마커 생성
         userMarker = new google.maps.Marker({
             position: defaultLocation,
@@ -109,13 +103,36 @@ window.initMap = async function () {
             { id: 2, name: "개화 예상 지역 2", lat: 28.531, lng: -81.119, radius: 1000, info: "군집 2" },
             { id: 3, name: "개화 예상 지역 3", lat: 28.54, lng: -81.225, radius: 2000, info: "군집 3" },
         ];
-        window.BloomArea.create(map, bloomAreasData);
+        // window.BloomArea.create(map, bloomAreasData);
+
+        window.bloomAreasData = bloomAreasData;
+        // 체크박스가 켜져 있을 때만 개화 지역 표시
+        if ($("#check2025").prop("checked")) {
+            BloomArea.create(map, bloomAreasData);
+        }
 
         console.log("✅ Google Maps 초기화 완료");
     } catch (error) {
         console.error("❌ Google Maps 초기화 실패:", error);
     }
 };
+
+$(function () {
+    const $checkbox = $("#check2025");
+
+    $checkbox.on("change", function () {
+        if (this.checked) {
+            // console.log("✅ Present Blooming Area 표시됨");
+            BloomArea.create(window.map, window.bloomAreasData);
+            // if (window.map && window.bloomAreasData) {
+            //     BloomArea.create(window.map, window.bloomAreasData);
+            // }
+        } else {
+            console.log("❌ Present Blooming Area 숨김");
+            BloomArea.clear();
+        }
+    });
+});
 
 /* ================================
    위치 관리
