@@ -1,22 +1,34 @@
 # app/chart/chart_service.py
 from fastapi import HTTPException
-from datetime import datetime  # <-- datetime 라이브러리 임포트
+from datetime import datetime
 from app.chart import chart_database
 
-def get_current_year_bloom_data(): # <-- 함수 이름 변경 및 year 파라미터 삭제
+def get_current_year_bloom_data():
     """
-    '현재 연도'를 기준으로 개화량 데이터를 찾아 반환합니다.
+    현재 연도 데이터를 가져와 프론트엔드가 예상하는
+    {"bloom": {...}, "honey": [...]} 형태로 재구성하여 반환합니다.
     """
-    # 1. 현재 날짜와 시간 정보를 가져와서 연도만 추출합니다.
-    #    (이 코드가 실행되는 시점이 2025년이므로 current_year는 2025가 됩니다.)
     current_year = datetime.now().year
 
-    # 2. 동적으로 얻은 '올해'의 연도를 key로 사용해 데이터를 찾습니다.
     if current_year in chart_database.bloom_data:
-        # 데이터베이스의 Mock 데이터를 바로 반환.
-        return chart_database.bloom_data[current_year]
+        # 원본 데이터를 가져옵니다.
+        original_data = chart_database.bloom_data[current_year]
 
-       
-    
-    # 만약 '올해'에 해당하는 데이터가 없다면 404 에러를 발생시킵니다.
+        # 프론트엔드가 예상하는 형태로 데이터를 재구성합니다.
+        formatted_data = {
+            "bloom": {
+                "acacia": original_data.get("acacia", []),
+                "almond": original_data.get("almond", [])
+            },
+            "honey": original_data.get("honey", [])
+        }
+
+        # print() 함수는 서버를 실행한 터미널에 결과를 출력합니다.
+        print("✅ Formatted Data:")
+        print(formatted_data)
+
+        # 재구성한 데이터를 반환합니다.
+        return formatted_data
+
+    # if 조건이 맞지 않을 때(데이터가 없을 때) 실행되도록 안으로 이동
     raise HTTPException(status_code=404, detail=f"Chart data for the current year ({current_year}) not found")
