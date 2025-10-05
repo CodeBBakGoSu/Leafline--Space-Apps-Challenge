@@ -23,9 +23,9 @@ def get_current_year_bloom_data():
             "honey": original_data.get("honey", [])
         }
 
-        # print() 함수는 서버를 실행한 터미널에 결과를 출력합니다.
-        print("✅ Formatted Data:")
-        print(formatted_data)
+        # # print() 함수는 서버를 실행한 터미널에 결과를 출력합니다.
+        # print("✅ Formatted Data:")
+        # print(formatted_data)
 
         # 재구성한 데이터를 반환합니다.
         return formatted_data
