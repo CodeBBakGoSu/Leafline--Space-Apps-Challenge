@@ -130,3 +130,45 @@ window.API_BASE_URL = API_BASE_URL;
 /**
  * 메뉴 클릭 시 로고 이미지 변경
  */
+
+// // 캘린더
+// $img = document.querySelector(".menu-img > img");
+// $img.src = `../img/icon_common/icon_nav_calendar_yellow.png`;
+// // 대시보드
+// $img = document.querySelector(".menu-img > img");
+// $img.src = `../img/icon_common/icon_nav_dashboard_yellow.png.png`;
+// // 커뮤니티
+// $img = document.querySelector(".menu-img > img");
+// $img.src = `../img/icon_common/icon_nav_dashboard_yellow.png.png`;
+
+// $(".menu-img > img").attr({ src: "../img/icon_common/icon_nav_dashboard_yellow.png" });
+
+// ==============================
+
+// jQuery로 메뉴 아이콘 색상 토글 (버블링 의존 X)
+$(function () {
+  // 파일명에서 _gray ↔ _yellow 치환
+  const toYellow = (src) => src.replace(/_gray(.\w+)$/i, "_yellow$1");
+  const toGray   = (src) => src.replace(/_yellow(.\w+)$/i, "_gray$1");
+
+  function updateIcons($targetItem) {
+    $(".menu-item img.item-img").each(function () {
+      const $img = $(this);
+      const isTarget = $img.closest(".menu-item")[0] === $targetItem[0];
+      const src = $img.attr("src");
+      $img.attr("src", isTarget ? toYellow(src) : toGray(src));
+    });
+  }
+
+  // 클릭: 전부 gray → 현재만 yellow
+  $(".menu-item").on("click", function () {
+    updateIcons($(this));
+  });
+
+  // 초기 상태: .active가 있으면 그 아이콘만 yellow, 없으면 dashboard를 yellow
+  (function initIconColor() {
+    const $active = $(".menu-item.active").first();
+    const $fallback = $('.menu-item[data-page="dashboard"]');
+    updateIcons($active.length ? $active : $fallback);
+  })();
+});
