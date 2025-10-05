@@ -239,7 +239,7 @@ input:focus + .slider {
     background-color: #ffffff;
     border: 1px solid #ccc8c2;
     border-radius: 6px;
-    padding: 8px 12px;
+    padding: 18px 12px;
     z-index: 10;
 }
 
@@ -289,6 +289,7 @@ input:focus + .slider {
 .checkbox-text {
     display: flex;
     align-items: center;
+    color: #ff462d;
 }
 
 /* ================================= */
@@ -320,10 +321,24 @@ input:focus + .slider {
 }
 
 /* 차트 내용 title */
+.box-title .title-main {
+    display: flex;
+    justify-content: space-between;
+}
+
 .box-title .title-main h1 {
     font-size: 28px;
     margin: 0;
     padding: 0;
+}
+
+.title-main .flower {
+    display: flex;
+    gap: 5px;
+}
+
+.flower-font {
+    color: #ff462d;
 }
 
 /* 일단 추가해보기... */
@@ -338,4 +353,39 @@ input:focus + .slider {
 .chart {
     width: 100% !important;
     height: 87% !important;
+}
+
+.honey-toggle {
+    display: flex;
+    gap: 8px;
+}
+
+.honey-toggle .text {
+    color: #ffca80;
+    /* font: medium */
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* 기존의 체크박스 숨기기 */
+.honey-toggle input[type="checkbox"] {
+    display: none;
+}
+
+/* 커스텀 아이콘 */
+.honey-toggle .honey-icon {
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/live map/honey_radio_default.png"); /* 비활성 이미지 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease;
+}
+
+/* 체크 시 활성 이미지로 변경 */
+.honey-toggle input:checked + .honey-icon {
+    background-image: url("../img/live map/honey_radio_active.png"); /* 활성 이미지 */
+    transform: scale(1.1);
 }
