@@ -38,6 +38,7 @@ nav-wrap
     flex-direction: column;
     justify-content: flex-start; /* 로고는 위, 메뉴는 아래로 분리 */
     height: 100%; /* 전체 높이 사용 */
+    gap: 20px;
     padding-bottom: 20px;
 }
 
@@ -53,7 +54,7 @@ nav-wrap
     display: flex;
     flex-direction: column;
     /* gap: 5vh; */
-    gap: 20px;
+    gap: 40px;
     margin-top: 20px;
     padding-left:10px;
 
