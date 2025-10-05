@@ -176,7 +176,7 @@ function updateMapLocation(lat, lng, title = "My Location") {
 async function loadUserProfile() {
     try {
         // API 요청
-        const response = await fetch("http://localhost:8000/api/profile");
+        const response = await fetch("http://13.55.59.31:3000/api/profile");
         const profile = await response.json();
 
         // 위치 정보가 있으면 지도 업데이트

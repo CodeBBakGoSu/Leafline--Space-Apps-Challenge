@@ -191,8 +191,8 @@ aiBtn.addEventListener('click', async () => {
     try {
         // 백엔드 API 호출 (사용자 입력을 context로 전달)
         const url = userInput 
-            ? `http://localhost:8000/api/todolist/ai-todos?context=${encodeURIComponent(userInput)}`
-            : 'http://localhost:8000/api/todolist/ai-todos';
+            ? `http://13.55.59.31:3000/api/todolist/ai-todos?context=${encodeURIComponent(userInput)}`
+            : 'http://13.55.59.31:3000/api/todolist/ai-todos';
         
         const response = await fetch(url);
         const aiTodos = await response.json();
