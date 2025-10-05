@@ -106,7 +106,7 @@ body {
 .calendar-header img{scale: 0.13;
 position: fixed;
     top: -30px;
-    left: 777px;
+    left: 828px;
 }
 
 /* .prevMonth, .nextMonth{ margin-top: -15px;} */
@@ -185,17 +185,17 @@ position: fixed;
 /* 사이드바 */
 .sidebar {
     width: 300px;
-    height: 805px;
+    height: 710px;
     padding: 20px;
     position: relative;
     z-index: 1;
     background-color: #f7f5f2;
     border: 0px;
     border-radius: 16px;
-    margin: -50px 25px 0px 25px; /* 위로 50px 이동 */
+    /* margin: -50px 25px 0px 25px; 위로 50px 이동 */
     
-    /* 아래에서 위로 슬라이드 애니메이션 */
-    transform: translateY(100%);
+    /* 오른쪽에서 왼쪽으로 슬라이드 애니메이션 */
+    transform: translateX(100%);
     opacity: 0;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                 opacity 0.4s ease, 
@@ -209,10 +209,10 @@ position: fixed;
     z-index: 10; /* 오버레이 위로 올라오도록 */
 }
 
-/* 사이드바가 활성화되었을 때의 스타일 - 아래에서 위로 슉! */
+/* 사이드바가 활성화되었을 때의 스타일 - 오른쪽애서 왼쪽으로 슉! */
 .sidebar.active {
     z-index: 10; /* 오버레이 위로 올라오도록 */
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
 }
 
@@ -275,7 +275,7 @@ position: fixed;
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 130px;
+    margin-top: 25px;
     transition: background-color 0.2s;
 }
 
