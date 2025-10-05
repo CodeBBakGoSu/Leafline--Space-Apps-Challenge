@@ -308,7 +308,7 @@ dashboard.js 파일 내에서 fetch 함수를 사용하여 위 API 엔드포인�
 API로부터 받은 JSON 데이터를 사용하여 차트를 렌더링하는 로직을 구현해 주세요.
 ================================ */
 /* ======= Blooming Chart JS (Honey 토글 복구) ======= */
-const API_URL = "/api/blooming-chart";
+const API_URL = "/api/charts/bloom-watch";
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const NOW = new Date();
