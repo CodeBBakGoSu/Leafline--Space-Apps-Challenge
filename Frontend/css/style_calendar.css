@@ -16,7 +16,7 @@ html, body {
 body {
     font-family: sans-serif;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 0px;
 }
 
 /* 날짜 선택 시 다른 영역 블러처리 */
@@ -25,11 +25,12 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.25);
+    width: 98.6%;
+    height: 89%;
+    background-color: rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(3px); /* 블러 */
     z-index: 5;
+    border-radius: 16px;
 }
 
 /*캘린더 전체 영역*/
@@ -53,7 +54,7 @@ body {
 
 .title {
     width: 50%;
-    padding: 15px 0px;
+    padding: 0px 0px;
     display: flex;
 }
 
@@ -83,17 +84,9 @@ body {
 .header{
     background-color: #fff; 
     display: flex; 
-    height: 60px;
+    height: 30px;
 }
 
-/*헤더-월 이동BT*/
-.head-moveBt {
-    width: 50%;
-    padding: 0px 20px 0px 50px;
-    align-items: end;
-    border: 0px;
-    z-index: 4; /*오버레이의 z-index가 5이기 떄문에 밑에 깔으려고 4로 설정*/
-}
 .calendar-header {
     /* margin: 0px; */
     height: 100%;
@@ -105,8 +98,8 @@ body {
 /* 월 선택 아이콘 사이즈 */
 .calendar-header img{scale: 0.13;
 position: fixed;
-    top: -30px;
-    left: 828px;
+    top: -70px;
+    left: 970px;
 }
 
 /* .prevMonth, .nextMonth{ margin-top: -15px;} */
@@ -128,7 +121,7 @@ position: fixed;
 /*캘린더 일 구분 표시선*/
 .date-cell {
     border: 1px solid #ccc8c2;
-    height: 100px; /* 높이 증가 */
+    height: 128px; /* 높이 증가 */
     padding: 5px;
     font-size: 14px;
     cursor: pointer;
@@ -184,9 +177,11 @@ position: fixed;
 
 /* 사이드바 */
 .sidebar {
-    width: 300px;
+    width: 330px;
     height: 710px;
     padding: 20px;
+    margin-top: 11px;
+    margin-right: 30px;
     position: relative;
     z-index: 1;
     background-color: #f7f5f2;
