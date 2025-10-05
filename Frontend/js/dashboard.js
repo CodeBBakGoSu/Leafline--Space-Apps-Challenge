@@ -586,13 +586,17 @@ function buildChart(bloomData, honeyData) {
     buildChart(bloomData, honeyData);
 })();
 
-
 /* ================================
    Event 토글 시 지도 대신 이미지 표시
 ================================ */
 $(function () {
     const $map = $("#map");
-    const eventImage = "#"; // 원하는 이미지 경로로 변경
+    const eventImage = "../img/live map/livemap_event_map.png";
+    // 추가
+    const $subtitle = $("#map-text"); // p태그 선택
+
+    // 원래 텍스트 저장
+    const originalText = $subtitle.text();
 
     $(".toggle-option").on("click", function () {
         const isEvent = $(this).hasClass("event");
@@ -603,14 +607,18 @@ $(function () {
                      alt="Event Map Image" 
                      style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
             `);
-            console.log("📷 Event 모드: 이미지로 전환됨");
+
+            // p태그 내용 변경
+            $subtitle.html("California Central Valley region<br>85% almond bloom predicted within 2 weeks");
         } else {
             // My 모드: 다시 Google Maps 표시
             $map.empty(); // 이미지 제거
             if (typeof initMap === "function") {
                 initMap(); // 기존 지도 재초기화
             }
-            console.log("🗺️ My 모드: Google Maps로 복귀");
+
+            // 원래 p태그 내용 복원
+            $subtitle.text(originalText);
         }
     });
 });
