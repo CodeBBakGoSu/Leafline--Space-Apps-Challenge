@@ -31,7 +31,8 @@
                             <div class="menu-img">
                                 <img
                                     src="img/icon_common/icon_nav_dashboard_gray.png"
-                                    width="40px"지금 
+                                    width="40px"
+                                    지금
                                     class="item-img"
                                     id="dashboard" />
                             </div>
@@ -184,7 +185,7 @@
                 const menuItems = document.querySelectorAll(".menu-item, .chatbot-menu");
                 const contentFrame = document.getElementById("contentFrame");
                 const frameScale = {
-                    dashboard: 0.8,
+                    dashboard: 1,
                     calendar: 0.8,
                 };
 
@@ -201,13 +202,13 @@
                         document.querySelector(".middle-section").style.display = "none";
                         // document.querySelector(".view-label").style.display = "none";
                         const label = document.querySelector(".view-label"); // 추가
-                        if(label) lable.style.display = "none"; // 추가
+                        if (label) lable.style.display = "none"; // 추가
                         document.querySelector(".bottom-section").style.height = "100%";
                     } else {
                         document.querySelector(".middle-section").style.display = "flex";
                         const label = document.querySelector(".view-label"); // 추가
-                        if(label) label.style.display = ""; // 추가
-                        document.querySelector(".bottom-section").style.height="";  // 추가
+                        if (label) label.style.display = ""; // 추가
+                        document.querySelector(".bottom-section").style.height = ""; // 추가
                     }
                     switch (page) {
                         case "dashboard":
