@@ -26,7 +26,7 @@
         <script defer src="../js/bee_flight_range.js"></script>
         <script defer src="../js/bloom_area.js"></script>
         <script defer src="../js/dashboard.js"></script>
-    
+
         <script
             defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ4IcdvhFzj-_9c9nGtKZhoBIN4OXVJPI&language=en&callback=initMap&libraries=geometry"></script>
@@ -75,17 +75,7 @@
                             <div class="checkbox-item">
                                 <label class="check">
                                     <input type="checkbox" id="check2025" name="check2025" value="2025" />
-                                    <span class="checkbox-text font-r font-grey4" id="checkText2025"
-                                        >2025 Blooming Area</span
-                                    >
-                                </label>
-                            </div>
-                            <div class="checkbox-item">
-                                <label class="check">
-                                    <input type="checkbox" id="check2024" name="check2024" value="2024" />
-                                    <span class="checkbox-text font-r font-grey4" id="checkText2024"
-                                        >2024 Blooming Area</span
-                                    >
+                                    <span class="checkbox-text font-r" id="checkText2025">Present Blooming Area</span>
                                 </label>
                             </div>
                         </div>
@@ -104,11 +94,24 @@
                         <!-- 박스 -->
                         <div class="box-title">
                             <div class="title-main">
-                                <h1 class="font-sb font-main">March 21, Wake Up the Bees!</h1>
-                                <p class="font-r font-grey3">Acacia trees are starting to bloom.</p>
+                                <div class="title-item">
+                                    <h1 class="font-sb font-main">March 21, Wake Up the Bees!</h1>
+                                    <p class="font-r font-grey3">Red Maple trees are starting to bloom.</p>
+                                </div>
+                                <div class="title-item">
+                                    <div class="flower">
+                                        <img
+                                            src="../img/live map/livemap_icon_redMaple.png"
+                                            ,
+                                            width="25px"
+                                            ,
+                                            height="25px" />
+                                        <p class="flower-font">Red Maple</p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="title-radio">
-                                <!-- 라디오 버튼이 들어갈 영역 -->
+                                <!-- Honey 체크박스가 들어올 영역 -->
                             </div>
                         </div>
                         <div class="box-chart">
@@ -122,7 +125,6 @@
             </div>
         </div>
     </body>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="../js/index.js"></script>
 </html>

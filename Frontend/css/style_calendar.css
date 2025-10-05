@@ -25,12 +25,19 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 98.6%;
-    height: 89%;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(3px); /* 블러 */
     z-index: 5;
     border-radius: 16px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 너비 애니메이션 */
+}
+
+/* 사이드바가 없을 때 overlay도 확장 */
+.overlay.expanded {
+    width: calc(100% + 250px); /* 캘린더와 동일하게 확장 */
+    margin-right: -250px; /* 오른쪽으로만 확장 */
 }
 
 /*캘린더 전체 영역*/
@@ -78,6 +85,13 @@ body {
     background-color: #fff;
     height: 100%; /* 부모 높이에 맞춤 */
     overflow: hidden; /* 넘치는 내용 숨김 */
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 너비 애니메이션 */
+}
+
+/* 사이드바가 없을 때 캘린더 확장 - 오른쪽으로만 확장 */
+.calendar-container.expanded {
+    width: calc(100% + 250px); /* x축을 더 길게 확장 */
+    margin-right: -250px; /* 오른쪽으로만 500px 확장 (메뉴 바 침범 방지) */
 }
 
 /*캘린더 헤더*/
@@ -85,6 +99,13 @@ body {
     background-color: #fff; 
     display: flex; 
     height: 30px;
+    transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 패딩 애니메이션 */
+}
+
+/* 사이드바가 없을 때 헤더 확장 - 오른쪽으로만 확장 */
+.header.expanded {
+    width: calc(100% + 250px); /* 헤더도 가로로 확장 */
+    margin-right: -250px; /* 오른쪽으로만 500px 확장 (메뉴 바 침범 방지) */
 }
 
 .calendar-header {
@@ -96,10 +117,17 @@ body {
 }
 
 /* 월 선택 아이콘 사이즈 */
-.calendar-header img{scale: 0.13;
-position: fixed;
+.calendar-header img{
+    scale: 0.13;
+    position: fixed;
     top: -70px;
     left: 970px;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 위치 애니메이션 */
+}
+
+/* 사이드바가 없을 때 월 이동 버튼을 오른쪽으로 이동 */
+.calendar-header img.expanded {
+    left: 1220px; /* 오른쪽으로 250px 이동 */
 }
 
 /* .prevMonth, .nextMonth{ margin-top: -15px;} */
@@ -109,7 +137,7 @@ position: fixed;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
-    max-height: calc(100vh - 120px); /* 높이 증가 - 헤더와 여백 줄임 */
+    max-height: calc(100vh - 100px); /* 높이 증가 - 헤더와 여백 줄임 */
     overflow: hidden;
 }
 

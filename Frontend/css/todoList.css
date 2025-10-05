@@ -122,6 +122,8 @@ body {
     align-items: center;
     padding: 15px;
     border-radius: 10px;
+    position: relative;
+    z-index: 0; /* ai-options-list보다 확실히 아래로 */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -338,12 +340,18 @@ body {
    AI 추천 옵션 영역
 ================================ */
 .ai-options-container {
-    margin-top: 15px;
-    width: 550px;
+    margin-top: 15px;                                                                                           
+    width: 600px;
     max-height: 0;
-    overflow: hidden;
+    overflow: visible;
     transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
     opacity: 0;
+    position: fixed; /* 화면에 고정 */
+    top: 53%; /* 더 아래로 이동 */
+    left: 45%; /* 왼쪽으로 이동 */
+    transform: translate(-50%, -50%); /* 중앙 정렬 */
+    z-index: 9999; /* 최고 우선순위 */
+    pointer-events: none; /* 컨테이너는 클릭 불가 */
 }
 
 .ai-options-container.show {
@@ -356,26 +364,32 @@ body {
     flex-direction: column;
     gap: 0;
     background: #ffffff;
-    border-radius: 25px;
-    padding: 20px 25px;
+    border-radius: 15px; /* 25px에서 15px로 줄임 */
+    padding: 10px 15px; /* 20px 25px에서 10px 15px로 줄임 */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     animation: slideInContainer 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     opacity: 0;
     transform: translateY(-10px);
+    font-size: 0.8em; /* 전체 폰트 크기 줄임 */
+    position: relative;
+    z-index: 10000; /* 최고 우선순위 */
+    pointer-events: auto; /* 클릭 가능 */
 }
 
 .ai-option-item {
-    padding: 18px 0;
+    padding: 12px 0; /* 18px에서 12px로 줄임 */
     background: transparent;
     border: none;
     border-bottom: 1px solid #e0e0e0;
     color: #333333;
-    font-size: 18px;
+    font-size: 0.9em; /* 폰트 크기 줄임 */
     font-weight: 500;
     text-align: left;
     cursor: pointer;
     transition: opacity 0.3s ease, color 0.3s ease;
     opacity: 1;
+    position: relative;
+    z-index: 3; /* todo-item보다 위로 올라가도록 */
 }
 
 .ai-option-item:last-child {

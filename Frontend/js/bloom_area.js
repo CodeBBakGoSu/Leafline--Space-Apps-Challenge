@@ -32,7 +32,7 @@ function createBloomAreas(map, bloom_areas) {
   const infoWindow = new google.maps.InfoWindow();
 
   // 개화 예상 지역들을 순회하며 폴리곤과 마커 생성
-  bloom_areas.forEach(area => {
+  bloom_areas.forEach((area) => {
     const centerPoint = new google.maps.LatLng(area.lat, area.lng);
     const polygonCoords = generateIrregularPolygonCoords(centerPoint, area.radius);
 
@@ -73,12 +73,12 @@ function createBloomAreas(map, bloom_areas) {
 }
 
 function clearBloomAreas() {
-  bloomAreaObjects.forEach(obj => obj.setMap(null));
+  bloomAreaObjects.forEach((obj) => obj.setMap(null));
   bloomAreaObjects = [];
 }
 
 function toggleBloomAreas(map, show) {
-  bloomAreaObjects.forEach(obj => obj.setMap(show ? map : null));
+  bloomAreaObjects.forEach((obj) => obj.setMap(show ? map : null));
   console.log(`🌸 개화 예상 지역: ${show ? '표시 ✅'  : '숨김 ❌' }`);
 }
 
