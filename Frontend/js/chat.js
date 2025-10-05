@@ -210,7 +210,7 @@ window.addEventListener('load', function() {
         
         if (firstOpen) {
             setTimeout(() => {
-                addMessage("Hello! I'm Bloom AI. How can I help you?", 'ai');
+                addMessage('🌼 Hiya! Bloom AI here — your friendly assistant bot. What are we solving today?', 'ai');
             }, 500);
             firstOpen = false;
         }

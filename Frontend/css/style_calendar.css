@@ -193,6 +193,13 @@ body {
     background-color: transparent;
     color: rgba(255, 178, 70, 0.7);
     border: 1px dashed rgba(255, 178, 70, 0.7);
+    font-size: 12px;
+    color: #ffffff;
+    border-radius: 15px;
+    padding: 8px 10px;
+    margin-top: 4px;
+    text-align: left;
+    transition: opacity 0.3s ease;
 }
 
 /* AI 예측 일정 호버 시 진하게 */
