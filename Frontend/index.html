@@ -27,27 +27,43 @@
                         <!-- 메뉴 선택 바 모양 적용 시작 -->
                         <div class="nav-honey"></div>
                         <!-- 메뉴 선택 바 모양 적용 끝 -->
-                        <div class="menu-item" data-page="dashboard">
+                        <div class="menu-item" data-page="dashboard" id="menuDashboard">
                             <div class="menu-img">
-                                <img src="img/icon_common/icon_nav_dashboard_gray.png" width="40px" />
+                                <img
+                                    src="img/icon_common/icon_nav_dashboard_gray.png"
+                                    width="40px"
+                                    class="item-img"
+                                    id="dashboard" />
                             </div>
                             <div class="menu-text font-m">Dashboard</div>
                         </div>
-                        <div class="menu-item" data-page="calendar">
+                        <div class="menu-item" data-page="calendar" id="menuCalendar">
                             <div class="menu-img">
-                                <img src="img/icon_common/icon_nav_calendar_gray.png" width="40px" />
+                                <img
+                                    src="img/icon_common/icon_nav_calendar_gray.png"
+                                    width="40px"
+                                    class="item-img"
+                                    id="calendar" />
                             </div>
                             <div class="menu-text font-m">Calendar</div>
                         </div>
-                        <div class="menu-item" data-page="community">
+                        <div class="menu-item" data-page="community" id="menuCommunity">
                             <div class="menu-img">
-                                <img src="img/icon_common/icon_nav_community_gray.png" width="40px" />
+                                <img
+                                    src="img/icon_common/icon_nav_community_gray.png"
+                                    width="40px"
+                                    class="item-img"
+                                    id="community" />
                             </div>
                             <div class="menu-text font-m">Community</div>
                         </div>
-                        <div class="menu-item" data-page="setting">
+                        <div class="menu-item" data-page="setting" id="menuSetting">
                             <div class="menu-img">
-                                <img src="img/icon_common/icon_nav_setting_gray.png" width="40px" />
+                                <img
+                                    src="img/icon_common/icon_nav_setting_gray.png"
+                                    width="40px"
+                                    class="item-img"
+                                    id="setting" />
                             </div>
                             <div class="menu-text font-m">Setting</div>
                         </div>
@@ -183,10 +199,15 @@
                     // 커뮤니티 페이질 경우, 미들 세션 숨기기
                     if (page == "community") {
                         document.querySelector(".middle-section").style.display = "none";
-                        document.querySelector(".view-label").style.display = "none";
+                        // document.querySelector(".view-label").style.display = "none";
+                        const label = document.querySelector(".view-label"); // 추가
+                        if(label) lable.style.display = "none"; // 추가
                         document.querySelector(".bottom-section").style.height = "100%";
                     } else {
                         document.querySelector(".middle-section").style.display = "flex";
+                        const label = document.querySelector(".view-label"); // 추가
+                        if(label) label.style.display = ""; // 추가
+                        document.querySelector(".bottom-section").style.height="";  // 추가
                     }
                     switch (page) {
                         case "dashboard":

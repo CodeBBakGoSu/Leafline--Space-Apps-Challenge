@@ -78,6 +78,7 @@ nav-wrap
 
     transform-origin: right center;
     will-change: transform;
+    pointer-events: none; /*추가*/
 
     z-index: 1;
 }
