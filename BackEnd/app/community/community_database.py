@@ -4,8 +4,8 @@ from datetime import datetime, timezone
 # --- 사용자(User) Mock 데이터 ---
 # 게시글과 댓글에서 이 사용자 정보를 참조하게 됩니다.
 users = [
-    {"id": 1, "username": "Eunseo", "avatar_url": None},
-    {"id": 2, "username": "Eunseo2", "avatar_url": None},
+    {"id": 1, "username": "Alex", "avatar_url": None},
+    {"id": 2, "username": "Eunseo", "avatar_url": None},
     {"id": 3, "username": "NasaDev", "avatar_url": None},
 ]
 
@@ -14,24 +14,24 @@ users = [
 posts = [
     {
         "id": 101,
-        "title": "안녕하세요! Leafline 프로젝트입니다.",
-        "content": "드디어 커뮤니티 기능이 오픈되었습니다. 자유롭게 글을 남겨주세요.",
-        "author_id": 1, # Eunseo가 작성
+        "title": "Hello Bloomwatch Community!",
+        "content": "This is a test post for the Leafline community page.",
+        "author_id": 1, 
         "created_at": datetime(2025, 10, 5, 14, 0, 0, tzinfo=timezone.utc),
         "comment_count": 2
     },
     {
         "id": 102,
-        "title": "안녕하세요! Leafline 프로젝트입니다.2",
-        "content": "두 번째 테스트 게시글입니다. 잘 보이나요?",
+        "title": "Hive Management Tips",
+        "content": "Here are some tips for managing your beehives effectively.",
         "author_id": 2, # Eunseo2가 작성
         "created_at": datetime(2025, 10, 4, 14, 0, 0, tzinfo=timezone.utc),
         "comment_count": 3
     },
     {
         "id": 103,
-        "title": "Todo list 기능 건의",
-        "content": "Todo 항목에 우선순위를 정할 수 있으면 좋겠습니다.",
+        "title": "Prioritizing Todo Items",
+        "content": "When managing your tasks, it's important to prioritize them based on urgency and importance. Here are some strategies to help you do that effectively.",
         "author_id": 1, # Eunseo가 작성
         "created_at": datetime(2025, 10, 4, 19, 15, 0, tzinfo=timezone.utc),
         "comment_count": 0
