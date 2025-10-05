@@ -152,6 +152,6 @@ uv run pytest
 ## 🤝 기여하기
 
 1. 브랜치 생성 (`git checkout -b feature/amazing-feature`)
-2. 변경사항 커밋 (`git commit -m 'Add some amazing feature'`)
+2. 변경사항     커밋 (`git commit -m 'Add some amazing feature'`)
 3. 브랜치에 푸시 (`git push origin feature/amazing-feature`)
 4. Pull Request 생성
