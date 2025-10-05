@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = 'http://13.55.59.31:3000/api/community/posts';
+    const API_URL = '/api/community/posts'; // Vercel 프록시 사용
 
     const postList = document.getElementById('post-list');
     const modal = document.getElementById('post-modal');

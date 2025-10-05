@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(addFlowerEvents, 100);
 
     // 백엔드 API 주소
-    const BACKEND_API_URL = 'http://13.55.59.31:3000/api/calendar/schedule'; 
+    const BACKEND_API_URL = '/api/calendar/schedule'; // Vercel 프록시 사용 
     
     // ==========================================================
     //  새로운 함수: JSON 변환 및 백엔드 전송 (Fetch API 사용)
