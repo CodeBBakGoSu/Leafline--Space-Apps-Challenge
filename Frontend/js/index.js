@@ -54,7 +54,8 @@ window.API_BASE_URL = API_BASE_URL;
     const DISABLED_PAGES = new Set(["setting"]);
 
     // 초기 파라미터
-    const HONEY_ORG = { width: 190, left: 18}; // px
+    // const HONEY_ORG = { width: 190, left: 18 }; // px
+    const HONEY_ORG = { width: 190, left: 18 };
     const HONEY_SHRINK = { width: 0, left: 200 }; // px
     const DUR = { shrink: 160, move: 260, expand: 200 }; // ms
 
@@ -100,17 +101,18 @@ window.API_BASE_URL = API_BASE_URL;
 
     // 이벤트 바인딩
     menuItems.forEach((item, idx) => {
-        const page = item.dataset.page; // ★ 올바른 접근
+        const page = item.dataset.page;
         if (DISABLED_PAGES.has(page)) {
             item.style.cursor = "default";
             item.setAttribute("aria-disabled", "true");
-            // 이동 막고, 기존 alert 등은 외부 핸들러에 맡김
-            item.addEventListener("click", (e) => {
-                e.stopPropagation();
-            });
+            item.addEventListener("click", (e) => e.stopPropagation());
         } else {
             item.style.cursor = "pointer";
-            item.addEventListener("click", () => animateTo(idx));
+            // ❗ animateTo만 실행하고, src 변경은 index.html의 switchContent에서만 처리
+            item.addEventListener("click", (e) => {
+                animateTo(idx);
+                e.stopPropagation(); // 중복 클릭 방지
+            });
         }
     });
 
@@ -124,3 +126,7 @@ window.API_BASE_URL = API_BASE_URL;
     //   honey.style.top = `${targetTopFor(menuItems[currentIndex])}px`;
     // });
 })();
+
+/**
+ * 메뉴 클릭 시 로고 이미지 변경
+ */
