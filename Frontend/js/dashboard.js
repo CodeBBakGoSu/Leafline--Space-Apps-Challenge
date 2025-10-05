@@ -29,7 +29,6 @@ $(function () {
  * @requires bloom_area.js - 개화 예상 지역 모듈
  */
 
-
 /* ================================
    전역 변수
 ================================ */
@@ -63,7 +62,7 @@ let userMarker;
 window.initMap = async function () {
     // 기본 위치: Orlando, Florida
     const defaultLocation = { lat: 28.5649675, lng: -81.1614906 };
-    
+
     try {
         // 1. 지도 생성
         map = new google.maps.Map(document.getElementById("map"), {
@@ -108,7 +107,7 @@ window.initMap = async function () {
         const bloomAreasData = [
             { id: 1, name: "개화 예상 지역 1", lat: 28.598, lng: -81.147, radius: 1500, info: "군집 1" },
             { id: 2, name: "개화 예상 지역 2", lat: 28.531, lng: -81.119, radius: 1000, info: "군집 2" },
-            { id: 3, name: "개화 예상 지역 3", lat: 28.540, lng: -81.225, radius: 2000, info: "군집 3" }
+            { id: 3, name: "개화 예상 지역 3", lat: 28.54, lng: -81.225, radius: 2000, info: "군집 3" },
         ];
         window.BloomArea.create(map, bloomAreasData);
 
@@ -291,30 +290,6 @@ HTTP Method: GET
 dashboard.js 파일 내에서 fetch 함수를 사용하여 위 API 엔드포인트를 호출해 주세요.
 API로부터 받은 JSON 데이터를 사용하여 차트를 렌더링하는 로직을 구현해 주세요.
 ================================ */
-/* Chart.JS 삽입 */
-// const ctx = $(".chart");
-
-// new Chart(ctx, {
-//     type: "line",
-//     data: {
-//         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-//         datasets: [
-//             {
-//                 label: "# of Votes",
-//                 data: [12, 19, 3, 5, 2, 3],
-//                 borderWidth: 1,
-//             },
-//         ],
-//     },
-//     options: {
-//         scales: {
-//             y: {
-//                 beginAtZero: true,
-//             },
-//         },
-//     },
-// });
-
 /* ======= Blooming Chart JS (Honey 토글 복구) ======= */
 const API_URL = "/api/blooming-chart";
 
@@ -477,7 +452,7 @@ function buildChart(bloomData, honeyData) {
                     label: "Past / Predict",
                     data: bloomRolling,
                     yAxisID: "y",
-                    borderColor: "#2f78ff",
+                    borderColor: "#FF462D",
                     borderWidth: 3,
                     backgroundColor: "transparent",
                     tension: 0, // ← 완전히 각진 꺾은선
@@ -574,7 +549,7 @@ function buildChart(bloomData, honeyData) {
     $(".title-radio")
         .empty()
         .append(
-            '<label class="honey-toggle"><input type="checkbox" id="toggleHoney"> <span class="text">Honey</span></label>'
+            '<label class="honey-toggle"> <input type="checkbox" id="toggleHoney"> <div class="honey-icon"></div> <span class="text">Honey</span> </label>'
         );
 
     let payload;
