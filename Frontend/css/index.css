@@ -47,7 +47,7 @@
 
 .greeting-text {
     font-size: 24px;
-    font-weight: 600;
+    /* font-weight: 600; */
     color: #1f1e1b;
     margin: 0;
 }
