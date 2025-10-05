@@ -97,7 +97,7 @@
 
     // 리스트 렌더
     function render(days) {
-        const picked = days.slice(0, 7);
+        const picked = days.slice(0, 8);
         const html = `
       <div class="weather-list">
         ${picked.map(cardHTML).join("")}

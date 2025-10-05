@@ -20,10 +20,10 @@
 /* ===== Weather cards (추가) ===== */
 .weather-list {
     display: flex;
-    gap: 8px;
+    gap: 20px;
     align-items: stretch;
     overflow-x: auto; /* 폭이 좁을 때 스크롤 */
-    padding: 6px 0;
+    padding: 6px 0px;
 }
 
 .wcard {
@@ -82,11 +82,12 @@
 
 /* 오늘 카드(첫 번째) — 강조 */
 .wcard.today {
-    width: 80px;
+    width: 100px;
     height: 103px;
     background: #111; /* 짙은 배경 */
     color: #fff;
     opacity: 1;
+    margin-left: 22px;
 }
 
 .wcard.today .divider {
