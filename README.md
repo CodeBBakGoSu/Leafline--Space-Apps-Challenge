@@ -2,7 +2,7 @@
 
 <div align="center">
     <a href="https://www.bloombee.garden/">
-        <img src="Frontend/img/logo/logo_big.png" alt="Bloom Bee Logo" width="400"/>
+        <img src="ReadmeImg/logo.png" alt="Bloom Bee Logo" width="400"/>
     </a>
 </div>
 
