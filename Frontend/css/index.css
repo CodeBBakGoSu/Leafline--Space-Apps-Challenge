@@ -23,18 +23,19 @@
     background: #ffffff;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28);
+    /* box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28); */
     margin: 20px; /* dBody 검은 배경이 보이도록 여백 추가 */
     height: calc(100% - 40px); /* 여백을 고려한 높이 조정 */
 }
 
 .header-section {
+    /* flex: 0 0 8vh; */
     flex: 0 0 8vh;
     min-height: 64px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
+    padding: 0 20px;
     border-bottom: 1px solid #ececec;
 }
 
@@ -71,9 +72,10 @@
 }
 
 .middle-section {
-    flex: 0 0 25vh;
-    min-height: 200px;
+    /* flex: 0 0 25vh; */
+    /* min-height: 200px; */
     display: flex;
+    justify-content: center;
     gap: 14px;
     padding: 14px 20px;
 }
@@ -96,7 +98,8 @@
 }
 
 .todo-frame {
-    --todo-scale: 0.60;
+    /* --todo-scale: 0.6; */
+    --todo-scale: 1;
     width: calc(100% / var(--todo-scale));
     height: calc(120% / var(--todo-scale));
     border: none;
@@ -106,12 +109,17 @@
 }
 
 .weather-section {
-    flex: 0 0 40%;
-    padding: 10px;
+flex: 0 0 38%;
+width: 80%;
+    /* padding: 10px; */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+}
+
+.weather-section {
+    width: auto;
 }
 
 .weather-frame-wrapper {
@@ -123,8 +131,10 @@
 
 .weather-frame {
     --weather-scale: 0.9;
-    width: calc(110% / var(--weather-scale));
-    height: calc(120% / var(--weather-scale));
+    /* width: calc(110% / var(--weather-scale)); */
+    display: block;
+    width: calc(100% / var(--weather-scale));
+    height: calc(100% / var(--weather-scale));
     border: none;
     transform-origin: top left;
     transform: scale(var(--weather-scale));
@@ -133,9 +143,14 @@
 .bottom-section {
     flex: 1;
     display: flex;
-    flex-direction: column;
-    padding: 0 40px 40px;
-    gap: 16px;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    padding-top: 14px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    margin: 0;
+    /* gap: 16px; */
 }
 
 .view-label {
@@ -147,14 +162,16 @@
 .frame-wrapper {
     flex: 1;
     position: relative;
+    display: block;
     background: #ffffff;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     overflow: hidden;
     padding: 0;
 }
 
 .scaled-frame {
-    --frame-scale: 0.78;
+    /* --frame-scale: 0.78; */
+    --frame-scale: 1;
     width: calc(100% / var(--frame-scale));
     height: calc(110% / var(--frame-scale));
     border: none;

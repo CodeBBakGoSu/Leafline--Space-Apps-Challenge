@@ -4,6 +4,7 @@
 /* ===== weather 제목 ===== */
 .weather-container {
     padding: 0px;
+    min-width: 500px;
 }
 
 .weather-title {
@@ -19,15 +20,15 @@
 /* ===== Weather cards (추가) ===== */
 .weather-list {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     align-items: stretch;
     overflow-x: auto; /* 폭이 좁을 때 스크롤 */
     padding: 6px 0;
 }
 
 .wcard {
-    width: 85px;
-    height: 120px;
+    width: 80px;
+    height: 103px;
     background: #f7f5f2; /* 흐린 베이지 */
     border-radius: 16px;
     padding: 10px 12px;
@@ -81,8 +82,8 @@
 
 /* 오늘 카드(첫 번째) — 강조 */
 .wcard.today {
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 103px;
     background: #111; /* 짙은 배경 */
     color: #fff;
     opacity: 1;
