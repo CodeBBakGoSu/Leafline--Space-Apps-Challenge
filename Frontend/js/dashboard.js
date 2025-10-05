@@ -192,7 +192,7 @@ function updateMapLocation(lat, lng, title = "My Location") {
 async function loadUserProfile() {
     try {
         // API 요청
-        const response = await fetch("/api/profile"); // Vercel 프록시 사용
+        const response = await fetch("http://localhost:3000/api/profile"); // Vercel 프록시 사용
         const profile = await response.json();
 
         // 위치 정보가 있으면 지도 업데이트
@@ -308,7 +308,7 @@ dashboard.js 파일 내에서 fetch 함수를 사용하여 위 API 엔드포인�
 API로부터 받은 JSON 데이터를 사용하여 차트를 렌더링하는 로직을 구현해 주세요.
 ================================ */
 /* ======= Blooming Chart JS (Honey 토글 복구) ======= */
-const API_URL = "/api/charts/bloom-watch";
+const API_URL = "http://localhost:3000/api/charts/bloom-watch";
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const NOW = new Date();

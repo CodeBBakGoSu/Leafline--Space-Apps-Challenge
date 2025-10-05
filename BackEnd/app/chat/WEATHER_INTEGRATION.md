@@ -171,7 +171,7 @@ curl http://localhost:8000/api/dashboard/weather/7day
 ### 날씨 정보 확인
 ```bash
 # 프로필 정보 확인
-curl http://localhost:8000/api/profile
+curl http://localhost:3000/api/profile
 
 # weather_forecast 필드 확인
 ```

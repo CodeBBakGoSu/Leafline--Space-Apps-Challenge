@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
     # CORS
-    CORS_ORIGINS: List[str] = ["http://localhost:3000","https://*.vercel.app","https://leafline.vercel.app"
+    CORS_ORIGINS: List[str] = ["http://localhost:3000/*","https://*.vercel.app","https://leafline.vercel.app"
                                ,"https://www.bloombee.garden/"]
 
     # Gemini AI
